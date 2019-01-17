@@ -85,14 +85,18 @@ export default class App extends Component {
       yaw: 0
     }
 
+    let deltaArray = [];
+
     let prev = this.data[0];
     let isTrick = false;
 
     this.data.map((data) => {
 
-      delta.pitch += (Math.abs(data.pitch - prev.pitch) < 180) ? data.pitch - prev.pitch : 0;
-      delta.roll += (Math.abs(data.roll - prev.roll) < 180) ? data.roll - prev.roll : 0;
-      delta.yaw += (Math.abs(data.yaw - prev.yaw) < 180) ? data.yaw - prev.yaw : 0;
+      delta.pitch += this.getSmallestDifference(data.pitch - prev.pitch);
+      delta.roll += this.getSmallestDifference(data.roll - prev.roll);
+      delta.yaw += this.getSmallestDifference(data.yaw - prev.yaw);
+
+      deltaArray.push(Object.assign({}, { p: delta.pitch.toFixed(3), r: delta.roll.toFixed(3), y: delta.yaw.toFixed(3) }));
 
       prev = data;
 
@@ -129,13 +133,17 @@ export default class App extends Component {
     }
 
     if (isTrick) {
-      console.log(this.data, delta);
+      console.log(JSON.stringify(deltaArray));
     }
 
     this.data = [];
 
     this.setState({ delta: delta });
 
+  };
+
+  getSmallestDifference = (diff) => {
+    return diff += (diff > 180) ? -360 : (diff < -180) ? 360 : 0;
   };
 
   handleAnglesData = (data) => {
