@@ -86,6 +86,7 @@ export default class App extends Component {
     }
 
     let prev = this.data[0];
+    let isTrick = false;
 
     this.data.map((data) => {
 
@@ -99,26 +100,36 @@ export default class App extends Component {
 
     if (delta.yaw > 120) {
       this.setState({ trick: 'FS Shove-it!', background: '#f7e9a0', color: '#b9ae76' });
+      isTrick = true;
     }
 
     if (delta.yaw > 240) {
       this.setState({ trick: 'FS 360 Shove-it!', background: '#f7e9a0', color: '#b9ae76' });
+      isTrick = true;
     }
 
     if (delta.yaw < -120) {
       this.setState({ trick: 'BS Shove-it!', background: '#f7e9a0', color: '#b9ae76' });
+      isTrick = true;
     }
 
     if (delta.yaw < -240) {
       this.setState({ trick: 'BS 360 Shove-it!', background: '#f7e9a0', color: '#b9ae76' });
+      isTrick = true;
     }
 
     if (delta.roll < -320) {
       this.setState({ trick: 'Kickflip!', background: '#f76d6d', color: '#fd9498' });
+      isTrick = true;
     }
 
     if (delta.roll > 320) {
       this.setState({ trick: 'Heelflip!', background: '#f76d6d', color: '#fd9498' });
+      isTrick = true;
+    }
+
+    if (isTrick) {
+      console.log(this.data, delta);
     }
 
     this.data = [];
