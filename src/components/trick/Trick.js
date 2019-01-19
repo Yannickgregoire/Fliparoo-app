@@ -16,7 +16,7 @@ export default class Trick extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <TrickName/>
+                <TrickName />
                 <TrickDetector />
             </View >
         );
