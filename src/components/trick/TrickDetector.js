@@ -156,7 +156,7 @@ class TrickDetector extends Component {
             isTrick = true;
         }
 
-        if (this.isInRange(delta.yaw, 0, 45) && this.isInRange(delta.roll, -720, 45)) {
+        if (this.isInRange(delta.yaw, 0, 45) && this.isInRange(delta.roll, -720, 45) && this.isInRange(accumulated.pitch, 0, 45)) {
             this.props.setTrick({ name: 'Double Kickflip! ' + this.getRandomEmoji(), background: '#f76d6d', color: '#fd9498' });
             isTrick = true;
         }
@@ -244,7 +244,7 @@ class TrickDetector extends Component {
     render() {
 
         // uncomment next line to hide angle data
-        // return null;
+        return null;
 
         return (
             <View style={styles.container}>
