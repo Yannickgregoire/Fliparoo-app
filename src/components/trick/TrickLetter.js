@@ -22,9 +22,10 @@ export default class TrickName extends Component {
                 toValue: 1,
                 duration: 1000,
                 delay: this.props.index * 50,
-                easing: Easing.elastic(6)
+                easing: Easing.elastic(6),
+                useNativeDriver: true
             }
-        ).start(() => this.animate())
+        ).start()
     }
 
     render() {
