@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+        paddingLeft: 20,
         transform: [{ rotate: '90deg' }]
     }
 });
