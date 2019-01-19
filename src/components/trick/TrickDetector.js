@@ -31,6 +31,8 @@ class TrickDetector extends Component {
         this.data = [];
         this.acceleration = [];
         this.accelerationInterval;
+        this.rotation = rotation;
+
 
     }
 
@@ -47,21 +49,30 @@ class TrickDetector extends Component {
 
     startAccelerationDetection = () => {
 
+        let delta = {
+            pitch: 0,
+            roll: 0,
+            yaw: 0
+        }
+
+        let prev = this.acceleration[0];
+
+
         this.accelerationInterval = setInterval(() => {
 
-            const delta = {
+            delta = {
                 pitch: 0,
                 roll: 0,
                 yaw: 0
             }
 
-            let prev = this.acceleration[0];
+            prev = this.acceleration[0];
 
             this.acceleration.map((data) => {
 
-                delta.pitch += (Math.abs(data.pitch - prev.pitch) < 180) ? data.pitch - prev.pitch : 0;
-                delta.roll += (Math.abs(data.roll - prev.roll) < 180) ? data.roll - prev.roll : 0;
-                delta.yaw += (Math.abs(data.yaw - prev.yaw) < 180) ? data.yaw - prev.yaw : 0;
+                delta.pitch += this.getSmallestDifference(data.pitch - prev.pitch);
+                delta.roll += this.getSmallestDifference(data.roll - prev.roll);
+                delta.yaw += this.getSmallestDifference(data.yaw - prev.yaw);
 
                 prev = data;
 
@@ -89,7 +100,7 @@ class TrickDetector extends Component {
         }
 
         // for outputting
-        let deltaArray = [];
+        // let deltaArray = [];
 
         let prev = this.data[0];
         let isTrick = false;
@@ -100,51 +111,46 @@ class TrickDetector extends Component {
             delta.roll += this.getSmallestDifference(data.roll - prev.roll);
             delta.yaw += this.getSmallestDifference(data.yaw - prev.yaw);
 
-            deltaArray.push(Object.assign({}, { p: delta.pitch.toFixed(3), r: delta.roll.toFixed(3), y: delta.yaw.toFixed(3) }));
+            // for outputting
+            // deltaArray.push(Object.assign({}, { p: delta.pitch.toFixed(3), r: delta.roll.toFixed(3), y: delta.yaw.toFixed(3) }));
 
             prev = data;
 
         })
 
         if (delta.yaw > 120) {
-            this.setState({ trick: { name: 'FS Shove-it!', background: '#f7e9a0', color: '#b9ae76' } });
-            this.props.setTrick({ name: 'FS Shove-it!', background: '#f7e9a0', color: '#b9ae76' })
+            this.props.setTrick({ name: 'FS Shove-it! ' + this.getRandomEmoji(), background: '#f7e9a0', color: '#b9ae76' })
             isTrick = true;
         }
 
         if (delta.yaw > 240) {
-            this.setState({ trick: { name: 'FS 360 Shove-it!', background: '#f7e9a0', color: '#b9ae76' } });
-            this.props.setTrick({ name: 'FS 360 Shove-it!', background: '#f7e9a0', color: '#b9ae76' });
+            this.props.setTrick({ name: 'FS 360 Shove! ' + this.getRandomEmoji(), background: '#f7e9a0', color: '#b9ae76' });
             isTrick = true;
         }
 
         if (delta.yaw < -120) {
-            this.setState({ trick: { name: 'BS Shove-it!', background: '#f7e9a0', color: '#b9ae76' } });
-            this.props.setTrick({ name: 'BS Shove-it!', background: '#f7e9a0', color: '#b9ae76' });
+            this.props.setTrick({ name: 'BS Shove-it! ' + this.getRandomEmoji(), background: '#f7e9a0', color: '#b9ae76' });
             isTrick = true;
         }
 
         if (delta.yaw < -240) {
-            this.setState({ trick: { name: 'BS 360 Shove-it!', background: '#f7e9a0', color: '#b9ae76' } });
-            this.props.setTrick({ name: 'BS 360 Shove-it!', background: '#f7e9a0', color: '#b9ae76' });
+            this.props.setTrick({ name: 'BS 360 Shove! ' + this.getRandomEmoji(), background: '#f7e9a0', color: '#b9ae76' });
             isTrick = true;
         }
 
         if (delta.roll < -320) {
-            this.setState({ trick: { name: 'Kickflip!', background: '#f76d6d', color: '#fd9498' } });
-            this.props.setTrick({ name: 'Kickflip!', background: '#f76d6d', color: '#fd9498' });
+            this.props.setTrick({ name: 'Kickflip! ' + this.getRandomEmoji(), background: '#f76d6d', color: '#fd9498' });
             isTrick = true;
         }
 
         if (delta.roll > 320) {
-            this.setState({ trick: { name: 'Heelflip!', background: '#f76d6d', color: '#fd9498' } });
-            this.props.setTrick({ name: 'Heelflip!', background: '#f76d6d', color: '#fd9498' });
+            this.props.setTrick({ name: 'Heelflip! ' + this.getRandomEmoji(), background: '#f76d6d', color: '#fd9498' });
             isTrick = true;
         }
 
         if (isTrick) {
-            console.log(JSON.stringify(deltaArray));
             // set trick name in store
+            // console.log(JSON.stringify(deltaArray));
         }
 
         this.data = [];
@@ -157,39 +163,49 @@ class TrickDetector extends Component {
         return diff += (diff > 180) ? -360 : (diff < -180) ? 360 : 0;
     };
 
+    getRandomEmoji = () => {
+        return emojis[Math.floor(Math.random() * emojis.length)];
+    }
+
     handleAnglesData = (data) => {
 
-        const rotation = {
+        this.rotation = {
             pitch: data.pitch.toFixed(3),
             roll: data.roll.toFixed(3),
             yaw: data.yaw.toFixed(3)
         }
 
-        this.acceleration.push(rotation);
+        this.acceleration.push(this.rotation);
 
         if (this.acceleration.length > 10) {
             this.acceleration.shift();
         }
 
         if (this.state.recording === true) {
-            this.data.push(rotation);
+            this.data.push(this.rotation);
         }
 
-        this.setState({ rotation: rotation });
+        // this.setState({ rotation: this.rotation });
 
     };
 
     render() {
+
+        return null;
+        
         return (
             <View style={styles.container}>
-            
+
+                {/*}
                 <Text>pitch: {this.state.rotation.pitch}</Text>
                 <Text>roll: {this.state.rotation.roll}</Text>
                 <Text>yaw: {this.state.rotation.yaw}</Text>
+                
 
-                <Text>delta pitch: {this.state.delta.pitch.toFixed(3)}</Text>
-                <Text>delta roll: {this.state.delta.roll.toFixed(3)}</Text>
-                <Text>delta yaw: {this.state.delta.yaw.toFixed(3)}</Text>
+                <Text style={styles.font}>delta pitch: {this.state.delta.pitch.toFixed(3)}</Text>
+                <Text style={styles.font}>delta roll: {this.state.delta.roll.toFixed(3)}</Text>
+                <Text style={styles.font}>delta yaw: {this.state.delta.yaw.toFixed(3)}</Text>
+                */}
 
             </View >
         );
@@ -198,11 +214,15 @@ class TrickDetector extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: .5,
+        flex: .3,
         alignItems: 'center',
         justifyContent: 'center',
+    }, font: {
+        color: 'white'
     }
 });
+
+const emojis = ['🤘', '🔥', '👍', '🙌', '👏', '🤟', '🤙', '🎉', '💩'];
 
 const mapStateToProps = (state, ownProps) => ({
     trick: state.trick

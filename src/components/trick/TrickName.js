@@ -21,7 +21,7 @@ class TrickName extends Component {
         if (this.props.trick.name) {
 
             return [...this.props.trick.name].map((letter, index) => {
-                return <TrickLetter key={this.props.trick.name + '-' + index} letter={letter} index={index} />
+                return <TrickLetter key={Date.parse(new Date()) + '-' + this.props.trick.name + '-' + index} letter={letter} index={index} />
             })
 
         }
@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+        transform: [{ rotate: '90deg' }]
     }
 });
 
