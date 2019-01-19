@@ -41,9 +41,9 @@ const styles = StyleSheet.create({
     letter: {
         fontFamily: 'Nexa Rust Sans',
         alignSelf: 'flex-start',
-        marginRight: -4,
+        marginRight: -3,
         color: 'white',
-        fontSize: 54
+        fontSize: 48
     }
 });
 
