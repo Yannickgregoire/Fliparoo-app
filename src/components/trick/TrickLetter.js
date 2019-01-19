@@ -15,12 +15,6 @@ export default class TrickName extends Component {
         this.animate()
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (this.props.letter != prevProps.letter) {
-            this.setState({ opacity: new Animated.Value(0) })
-        }
-    }
-
     animate = () => {
         Animated.timing(
             this.state.opacity,
@@ -44,8 +38,11 @@ export default class TrickName extends Component {
 
 const styles = StyleSheet.create({
     letter: {
+        fontFamily: 'Nexa Rust Sans',
         alignSelf: 'flex-start',
-        fontSize: 72
+        marginRight: -4,
+        color: 'white',
+        fontSize: 54
     }
 });
 

@@ -38,7 +38,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -47,9 +47,17 @@
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
-		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Dry Brush.ttf</string>
+		<string>Nexa Rust Sans Black.otf</string>
+		<string>Sofia-Pro-Bold.otf</string>
+		<string>Sofia-Pro-Medium.otf</string>
+		<string>Sofia-Pro-Regular.otf</string>
+	</array>
 </dict>
 </plist>
