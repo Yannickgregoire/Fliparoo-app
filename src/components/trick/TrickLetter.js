@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { Animated, Easing, StyleSheet, Text} from 'react-native';
+import { Animated, Easing, StyleSheet, Text } from 'react-native';
 
 export default class TrickName extends Component {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            opacity: new Animated.Value(0)
-        }
+        this.opacity = new Animated.Value(0);
     }
 
     componentDidMount() {
@@ -17,7 +14,7 @@ export default class TrickName extends Component {
 
     animate = () => {
         Animated.timing(
-            this.state.opacity,
+            this.opacity,
             {
                 toValue: 1,
                 duration: 1000,
@@ -30,7 +27,7 @@ export default class TrickName extends Component {
 
     render() {
         return (
-            <Animated.View style={[{ transform: [{ scaleX: this.state.opacity }, { scaleY: this.state.opacity }] }]} >
+            <Animated.View style={[{ transform: [{ scaleX: this.opacity }, { scaleY: this.opacity }] }]} >
                 <Text style={[styles.letter]} >{this.props.letter}</Text>
             </Animated.View >
         );
@@ -46,4 +43,3 @@ const styles = StyleSheet.create({
         fontSize: 48
     }
 });
-

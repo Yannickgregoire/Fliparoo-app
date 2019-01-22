@@ -8,43 +8,45 @@ class TrickName extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { trick: {} };
-
-        this.animatedValue = []
-
     }
 
-    componentDidMount() { }
-
-    renderLetters = () => {
-
+    renderLines = () => {
         if (this.props.trick.name) {
-
-            return [...this.props.trick.name].map((letter, index) => {
-                return <TrickLetter key={Date.parse(new Date()) + '-' + this.props.trick.name + '-' + index} letter={letter} index={index} />
+            const lines = this.props.trick.name.split('\n');
+            return lines.map((line, index) => {
+                console.log(line)
+                return <View key={index} style={[styles.line]}>{this.renderLetters(lines[index])}</View>
             })
-
         }
+    }
 
+    renderLetters = (line) => {
+        return [...line].map((letter, index) => {
+            return <TrickLetter key={Date.parse(new Date()) + '-' + line + '-' + index} letter={letter} index={index} />
+        })
     }
 
     render() {
         return (
             <View style={styles.container}>
-                {this.renderLetters()}
+                {this.renderLines()}
             </View >
         );
     }
+
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'row',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         paddingLeft: 20,
         transform: [{ rotate: '90deg' }]
+    },
+    line: {
+        flexDirection: 'row',
     }
 });
 
