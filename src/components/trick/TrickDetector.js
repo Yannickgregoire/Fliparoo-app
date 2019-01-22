@@ -7,6 +7,8 @@ import { setTrick } from '../../store/actions';
 import { DeviceEventEmitter } from 'react-native';
 import { DeviceAngles } from 'NativeModules';
 
+import TrickPossibilities from './TrickPossibilities';
+
 class TrickDetector extends Component {
 
     constructor(props) {
@@ -32,7 +34,6 @@ class TrickDetector extends Component {
         this.angleData = [];
         this.acceleration = [];
         this.accelerationInterval;
-
 
     }
 
@@ -98,6 +99,7 @@ class TrickDetector extends Component {
             roll: 0,
             yaw: 0
         }
+        
         // for outputting
         let deltaArray = [];
 
@@ -121,88 +123,14 @@ class TrickDetector extends Component {
 
         })
 
-        if (this.isInRange(delta.yaw, 180, 45) && this.isInRange(delta.roll, 0, 45)) {
-            this.props.setTrick({ name: 'FS Shove-it! ' + this.getRandomEmoji(), background: '#f7e9a0', color: '#b9ae76' })
+        const trick = TrickPossibilities.getTrick(delta, accumulated);
+
+        if (trick) {
+            this.props.setTrick(trick);
             isTrick = true;
         }
-
-        if (this.isInRange(delta.yaw, 360, 45) && this.isInRange(delta.roll, 0, 45)) {
-            this.props.setTrick({ name: 'FS 360 Shove! ' + this.getRandomEmoji(), background: '#f7e9a0', color: '#b9ae76' });
-            isTrick = true;
-        }
-
-        if (this.isInRange(delta.yaw, -180, 45) && this.isInRange(delta.roll, 0, 45)) {
-            this.props.setTrick({ name: 'BS Shove-it! ' + this.getRandomEmoji(), background: '#f7e9a0', color: '#b9ae76' });
-            isTrick = true;
-        }
-
-        if (this.isInRange(delta.yaw, -180, 45) && this.isInRange(delta.roll, 0, 45)&& this.isInRange(accumulated.pitch, 270, 45)) {
-            this.props.setTrick({ name: 'Hardflip! ' + this.getRandomEmoji(), background: '#f7e9a0', color: '#b9ae76' });
-            isTrick = true;
-        }
-
-        if (this.isInRange(delta.yaw, 180, 45) && this.isInRange(delta.roll, -360, 45)&& this.isInRange(accumulated.pitch, 270, 45)) {
-            this.props.setTrick({ name: 'Hardflip! ' + this.getRandomEmoji(), background: '#f7e9a0', color: '#b9ae76' });
-            isTrick = true;
-        }
-
-        if (this.isInRange(delta.yaw, -360, 45) && this.isInRange(delta.roll, 0, 45)) {
-            this.props.setTrick({ name: 'BS 360 Shove! ' + this.getRandomEmoji(), background: '#f7e9a0', color: '#b9ae76' });
-            isTrick = true;
-        }
-
-        if (this.isInRange(delta.yaw, 0, 45) && this.isInRange(delta.roll, -360, 45)) {
-            this.props.setTrick({ name: 'Kickflip! ' + this.getRandomEmoji(), background: '#f76d6d', color: '#fd9498' });
-            isTrick = true;
-        }
-
-        if (this.isInRange(delta.yaw, 0, 45) && this.isInRange(delta.roll, -720, 45) && this.isInRange(accumulated.pitch, 0, 45)) {
-            this.props.setTrick({ name: 'Double Kickflip! ' + this.getRandomEmoji(), background: '#f76d6d', color: '#fd9498' });
-            isTrick = true;
-        }
-
-        if (this.isInRange(delta.yaw, 0, 45) && this.isInRange(delta.roll, 360, 45)) {
-            this.props.setTrick({ name: 'Heelflip! ' + this.getRandomEmoji(), background: '#f76d6d', color: '#fd9498' });
-            isTrick = true;
-        }
-
-        if (this.isInRange(delta.yaw, 0, 45) && this.isInRange(delta.roll, 720, 45)) {
-            this.props.setTrick({ name: 'Double Heelflip! ' + this.getRandomEmoji(), background: '#f76d6d', color: '#fd9498' });
-            isTrick = true;
-        }
-
-        if (this.isInRange(delta.yaw, -360, 45) && this.isInRange(delta.roll, -360, 45)) {
-            this.props.setTrick({ name: 'Tre Flip! ' + this.getRandomEmoji(), background: '#f76d6d', color: '#fd9498' });
-            isTrick = true;
-        }
-
-        if (this.isInRange(delta.yaw, 360, 45) && this.isInRange(delta.roll, -360, 45)) {
-            this.props.setTrick({ name: 'Doube Hardflip! ' + this.getRandomEmoji(), background: '#f76d6d', color: '#fd9498' });
-            isTrick = true;
-        }
-
-        if (this.isInRange(delta.yaw, 0, 45) && this.isInRange(delta.roll, -720, 45) && this.isInRange(accumulated.pitch, 360, 45)) {
-            this.props.setTrick({ name: 'Doube Hardflip! ' + this.getRandomEmoji(), background: '#f76d6d', color: '#fd9498' });
-            isTrick = true;
-        }
-
-        if (this.isInRange(delta.yaw, 360, 45) && this.isInRange(delta.roll, 360, 45)) {
-            this.props.setTrick({ name: 'Laserflip!' + this.getRandomEmoji(), background: '#f76d6d', color: '#fd9498' });
-            isTrick = true;
-        }
-
-        if (this.isInRange(delta.yaw, -360, 45) && this.isInRange(delta.roll, 360, 45)) {
-            this.props.setTrick({ name: 'Emerald flip! ' + this.getRandomEmoji(), background: '#f76d6d', color: '#fd9498' });
-            isTrick = true;
-        }
-
-        if (isTrick) {
-            // for outputting
-            // console.log(JSON.stringify(deltaArray));
-        }
-
+       
         this.angleData = [];
-
         this.setState({ delta: delta, accumulated: accumulated });
 
     };
@@ -210,14 +138,6 @@ class TrickDetector extends Component {
     getSmallestDifference = (diff) => {
         return diff += (diff > 180) ? -360 : (diff < -180) ? 360 : 0;
     };
-
-    getRandomEmoji = () => {
-        return emojis[Math.floor(Math.random() * emojis.length)];
-    }
-
-    isInRange = (property, number, margin) => {
-        return (property > number - margin && property < number + margin);
-    }
 
     handleAnglesData = (data) => {
 
@@ -244,7 +164,7 @@ class TrickDetector extends Component {
     render() {
 
         // uncomment next line to hide angle data
-        return null;
+        // return null;
 
         return (
             <View style={styles.container}>
@@ -284,8 +204,6 @@ const styles = StyleSheet.create({
         color: 'white'
     }
 });
-
-const emojis = ['🤘', '🔥', '👍', '🙌', '👏', '🤟', '🤙', '🎉', '💩'];
 
 const mapStateToProps = (state, ownProps) => ({
     trick: state.trick
