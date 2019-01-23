@@ -18,7 +18,7 @@ export default class Trick extends Component {
             <View style={styles.container}>
                 <TrickName />
                 <TrickDetector />
-            </View >
+            </View>
         );
     }
 };
@@ -26,6 +26,7 @@ export default class Trick extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'black'
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });

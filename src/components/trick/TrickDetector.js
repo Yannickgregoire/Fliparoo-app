@@ -173,18 +173,18 @@ class TrickDetector extends Component {
                     <Text style={styles.font}>p: {this.state.rotation.pitch}</Text>
                     <Text style={styles.font}>r: {this.state.rotation.roll}</Text>
                     <Text style={styles.font}>y: {this.state.rotation.yaw}</Text>
-                </View >
+                </View>
                 <View style={styles.column}>
                     <Text style={styles.font}>dp: {this.state.delta.pitch.toFixed(3)}</Text>
                     <Text style={styles.font}>dr: {this.state.delta.roll.toFixed(3)}</Text>
                     <Text style={styles.font}>dy: {this.state.delta.yaw.toFixed(3)}</Text>
-                </View >
+                </View>
                 <View style={styles.column}>
                     <Text style={styles.font}>ap: {this.state.accumulated.pitch.toFixed(3)}</Text>
                     <Text style={styles.font}>ar: {this.state.accumulated.roll.toFixed(3)}</Text>
                     <Text style={styles.font}>ay: {this.state.accumulated.yaw.toFixed(3)}</Text>
-                </View >
-            </View >
+                </View>
+            </View>
         );
     }
 };
