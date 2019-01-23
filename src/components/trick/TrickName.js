@@ -22,7 +22,7 @@ class TrickName extends Component {
 
     renderLetters = (line) => {
         return [...line].map((letter, index) => {
-            return <TrickLetter key={Date.parse(new Date()) + '-' + line + '-' + index} letter={letter} index={index} />
+            return <TrickLetter key={Date.parse(new Date()) + '-' + line + '-' + index} letter={letter} index={index} isLast={(index === line.length - 1)} />
         })
     }
 
@@ -30,7 +30,7 @@ class TrickName extends Component {
         return (
             <View style={styles.container}>
                 {this.renderLines()}
-            </View >
+            </View>
         );
     }
 
