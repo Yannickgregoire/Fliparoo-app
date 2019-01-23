@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
 import { StyleBook } from '../style/StyleBook'
 
+import { connect } from 'react-redux';
+import { setPermission } from '../../store/actions';
+
 import Button from '../ui/Button'
 import RadioButton from '../ui/RadioButton'
 
-export default class Intro extends Component {
+class Permission extends Component {
 
     constructor(props) {
         super(props);
@@ -15,7 +18,7 @@ export default class Intro extends Component {
     componentDidMount() { }
 
     selectPermission = (permission) => {
-        this.setState({ selected: permission })
+        this.props.setPermission(permission);
     }
 
     render() {
@@ -26,8 +29,8 @@ export default class Intro extends Component {
                         <Text style={StyleBook.body}>Would you like to send us your trick data? This way we can improve trick detection.</Text>
                         <Text style={StyleBook.description}>We'll store your device id and accellerometer data. Read why.</Text>
                         <View style={StyleBook.row}>
-                            <RadioButton value="no" text="no" description="thanks" selected={this.state.selected === 'no'} icon="👎" onSelect={this.selectPermission} />
-                            <RadioButton value="yes" text="yes" description="please" selected={this.state.selected === 'yes'} icon="👍" onSelect={this.selectPermission} />
+                            <RadioButton value={false} text="no" description="thanks" selected={this.props.permission.value === false} icon="👎" onSelect={this.selectPermission} />
+                            <RadioButton value={true} text="yes" description="please" selected={this.props.permission.value === true} icon="👍" onSelect={this.selectPermission} />
                         </View>
                     </View>
                 </ScrollView>
@@ -38,3 +41,19 @@ export default class Intro extends Component {
 };
 
 const styles = StyleSheet.create({});
+
+const mapStateToProps = (state, ownProps) => ({
+    permission: state.permission
+});
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    setPermission: (permission) => {
+        dispatch(setPermission(permission));
+    }
+});
+
+const ConnectedPermission = connect(
+    mapStateToProps, mapDispatchToProps
+)(Permission);
+
+export default ConnectedPermission;

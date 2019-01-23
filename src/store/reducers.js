@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import {
-    SET_TRICK
+    SET_TRICK,
+    SET_STANCE,
+    SET_PERMISSION
 } from './actions';
 
 const initialTrickState = {
@@ -27,6 +29,52 @@ const trickReducer = (state = initialTrickState, action) => {
 
 };
 
+const initialStanceState = {
+    value: 'regular'
+};
+
+const stanceReducer = (state = initialStanceState, action) => {
+
+    switch (action.type) {
+
+        case SET_STANCE:
+            return {
+                ...state,
+                value: action.stance
+            };
+            break;
+
+        default:
+            return state;
+            break;
+    }
+
+};
+
+const initialPermissionState = {
+    value: false
+};
+
+const permissionReducer = (state = initialPermissionState, action) => {
+
+    switch (action.type) {
+
+        case SET_PERMISSION:
+            return {
+                ...state,
+                value: action.permission
+            };
+            break;
+
+        default:
+            return state;
+            break;
+    }
+
+};
+
 export default combineReducers({
-    trick: trickReducer
+    trick: trickReducer,
+    stance: stanceReducer,
+    permission: permissionReducer
 });

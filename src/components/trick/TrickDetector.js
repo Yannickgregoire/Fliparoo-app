@@ -99,7 +99,7 @@ class TrickDetector extends Component {
             roll: 0,
             yaw: 0
         }
-        
+
         // for outputting
         let deltaArray = [];
 
@@ -129,7 +129,7 @@ class TrickDetector extends Component {
             this.props.setTrick(trick);
             isTrick = true;
         }
-       
+
         this.angleData = [];
         this.setState({ delta: delta, accumulated: accumulated });
 
@@ -140,6 +140,12 @@ class TrickDetector extends Component {
     };
 
     handleAnglesData = (data) => {
+
+        if (this.props.stance.value === 'goofy') {
+            data.pitch *= -1;
+            data.roll *= -1;
+            data.yaw *= -1;
+        }
 
         this.rotation = {
             pitch: data.pitch.toFixed(3),
@@ -206,7 +212,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state, ownProps) => ({
-    trick: state.trick
+    trick: state.trick,
+    stance: state.stance
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -216,8 +223,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
 const ConnectedTrickDetector = connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps, mapDispatchToProps
 )(TrickDetector);
 
 export default ConnectedTrickDetector;

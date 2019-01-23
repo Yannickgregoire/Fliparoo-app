@@ -14,7 +14,6 @@ class TrickName extends Component {
         if (this.props.trick.name) {
             const lines = this.props.trick.name.split('\n');
             return lines.map((line, index) => {
-                console.log(line)
                 return <View key={index} style={[styles.line]}>{this.renderLetters(lines[index])}</View>
             })
         }
@@ -27,8 +26,12 @@ class TrickName extends Component {
     }
 
     render() {
+
+        const styleRotation = (this.props.stance.value === 'regular') ? { transform: [{ rotate: '90deg' }] } : { transform: [{ rotate: '-90deg' }] };
+        const stylePadding = (this.props.stance.value === 'regular') ? { paddingLeft: 20 } : { paddingRight: 20 };
+
         return (
-            <View style={styles.container}>
+            <View style={[styles.container, styleRotation, stylePadding]}>
                 {this.renderLines()}
             </View>
         );
@@ -41,9 +44,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
-        paddingLeft: 20,
-        transform: [{ rotate: '90deg' }]
+        justifyContent: 'center'
     },
     line: {
         flexDirection: 'row',
@@ -51,7 +52,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state, ownProps) => ({
-    trick: state.trick
+    trick: state.trick,
+    stance: state.stance
 });
 
 const ConnectedTrickName = connect(
