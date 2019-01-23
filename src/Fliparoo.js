@@ -4,20 +4,33 @@ import { StatusBar } from 'react-native';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
+import { persistStore, persistReducer } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+import storage from 'redux-persist/lib/storage';
+
 import CombinedReducers from './store/reducers';
 import App from './components/App';
 
-const store = createStore(CombinedReducers);
+const persistConfig = {
+    key: 'root',
+    storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, CombinedReducers);
+const store = createStore(persistedReducer);
+const persistor = persistStore(store);
 
 export default class Fliparoo extends Component {
 
     render() {
         return (
             <Provider store={store}>
-                <StatusBar
-                    barStyle="light-content"
-                />
-                <App />
+                <PersistGate loading={null} persistor={persistor}>
+                    <StatusBar
+                        barStyle="light-content"
+                    />
+                    <App />
+                </PersistGate>
             </Provider>
         );
     }
