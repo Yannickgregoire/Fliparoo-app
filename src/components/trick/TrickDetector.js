@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
 
 import { connect } from 'react-redux';
 import { setTrick } from '../../store/actions';
@@ -8,10 +7,8 @@ import { setTrick } from '../../store/actions';
 import { DeviceEventEmitter } from 'react-native';
 import { DeviceAngles } from 'NativeModules';
 
-import Config from '../../api/Config';
+import Api from '../../api/Api';
 import TrickPossibilities from './TrickPossibilities';
-
-const DEVICE_UID = DeviceInfo.getUniqueID();
 
 class TrickDetector extends Component {
 
@@ -105,9 +102,7 @@ class TrickDetector extends Component {
         }
 
         let deltaArray = [];
-
         let prev = this.angleData[0];
-        let isTrick = false;
 
         this.angleData.map((data) => {
 
@@ -129,9 +124,9 @@ class TrickDetector extends Component {
 
         if (trick) {
             this.props.setTrick(trick);
-            isTrick = true;
-
-            this.sendTrickData(trick, deltaArray);
+            if (this.props.permission.value === true) {
+                Api.postTrickData(trick, deltaArray);
+            }
         }
 
         this.angleData = [];
@@ -168,24 +163,6 @@ class TrickDetector extends Component {
         }
 
         this.setState({ rotation: this.rotation });
-
-    };
-
-    sendTrickData = (trick, data) => {
-
-        if (this.props.permission.value === true) {
-            fetch(Config.server, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ uuid: DEVICE_UID, trick: { name: trick.id, data: data } }),
-            }).then((response) => {
-                console.log('success', response);
-            }, (error) => {
-                console.log('error', error);
-            });
-        }
 
     };
 
