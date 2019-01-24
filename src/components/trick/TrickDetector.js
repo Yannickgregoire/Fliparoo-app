@@ -173,17 +173,19 @@ class TrickDetector extends Component {
 
     sendTrickData = (trick, data) => {
 
-        fetch(Config.server, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ uuid: DEVICE_UID, trick: { name: trick.id, data: data } }),
-        }).then((response) => {
-            console.log('success', response);
-        }, (error) => {
-            console.log('error', error);
-        });
+        if (this.props.permission.value === true) {
+            fetch(Config.server, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ uuid: DEVICE_UID, trick: { name: trick.id, data: data } }),
+            }).then((response) => {
+                console.log('success', response);
+            }, (error) => {
+                console.log('error', error);
+            });
+        }
 
     };
 
@@ -233,7 +235,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state, ownProps) => ({
     trick: state.trick,
-    stance: state.stance
+    stance: state.stance,
+    permission: state.permission
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
