@@ -50,6 +50,9 @@ export const StyleBook = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 50
     },
+    buttonTouchable: {
+        width: '100%',
+    },
     buttonIcon: {
         fontSize: 24,
         marginRight: 8

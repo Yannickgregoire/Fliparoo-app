@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { TouchableOpacity, StyleSheet, View, Text } from 'react-native';
 import { StyleBook } from '../style/StyleBook'
 
 export default class Button extends Component {
@@ -33,12 +33,14 @@ export default class Button extends Component {
     render() {
 
         return (
-            <View style={[StyleBook.button, { ...this.props.style }]}>
-                {this.renderIcon()}
-                <View>
-                    {this.renderText()}
+            <TouchableOpacity style={StyleBook.buttonTouchable} onPress={this.props.onPress} activeOpacity={.5}>
+                <View style={[StyleBook.button, { ...this.props.style }]}>
+                    {this.renderIcon()}
+                    <View>
+                        {this.renderText()}
+                    </View>
                 </View>
-            </View>
+            </TouchableOpacity>
         );
     }
 };
