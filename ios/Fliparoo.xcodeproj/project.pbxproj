@@ -50,6 +50,7 @@
 		7268EEBA70CA45E7AB719D79 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DF72FC0D81034EC4BD404BE0 /* Roboto-BoldItalic.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		84293F7E15E3495ABD9C42B1 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4D6CA774B394F2280CBC09E /* Roboto-Medium.ttf */; };
+		A1E9323B768340B7ACC61F90 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA5F951CC644ECA82876928 /* libRNGestureHandler.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B13B817321D5775200B82E31 /* libRNDeviceAngles.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1A5D35221D573D100DB582E /* libRNDeviceAngles.a */; };
 		BD26A01E4CF548509E2762F0 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF446B9E4A9C4448BADE18FC /* Roboto-LightItalic.ttf */; };
@@ -348,6 +349,13 @@
 			remoteGlobalIDString = E72EC1401F7ABB5A0001BC90;
 			remoteInfo = "RNDeviceInfo-tvOS";
 		};
+		B18FC88321FA6E7600C0C780 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC3029A508D542C79217F2E7 /* RNGestureHandler.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNGestureHandler;
+		};
 		B1A5D35121D573D100DB582E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FEFF9A50175B430983BA473E /* RNDeviceAngles.xcodeproj */;
@@ -395,6 +403,8 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		89F724114A7143EE965202AA /* Dry Brush.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Dry Brush.ttf"; path = "../src/assets/fonts/Dry Brush.ttf"; sourceTree = "<group>"; };
 		8B0628BBC4474C46A533CEA4 /* Nexa Rust Sans Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nexa Rust Sans Black.otf"; path = "../src/assets/fonts/Nexa Rust Sans Black.otf"; sourceTree = "<group>"; };
+		9DA5F951CC644ECA82876928 /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
+		AC3029A508D542C79217F2E7 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		AF66ECA87804441A8EBC9DA5 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../src/assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		BF446B9E4A9C4448BADE18FC /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-LightItalic.ttf"; path = "../src/assets/fonts/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -436,6 +446,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				F19A7D5CA8444C0485FB1F0F /* libRNDeviceInfo.a in Frameworks */,
+				A1E9323B768340B7ACC61F90 /* libRNGestureHandler.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,6 +660,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				FEFF9A50175B430983BA473E /* RNDeviceAngles.xcodeproj */,
 				64B10A9B04464B28994B71A1 /* RNDeviceInfo.xcodeproj */,
+				AC3029A508D542C79217F2E7 /* RNGestureHandler.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -707,6 +719,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B18FC88021FA6E7600C0C780 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B18FC88421FA6E7600C0C780 /* libRNGestureHandler.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		B1A5D2B321D5661000DB582E /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -714,6 +734,7 @@
 				D0868542D087479FA311E914 /* libRNDeviceAngles.a */,
 				3CAA871DFBA0434C941ECF2C /* libRNDeviceInfo.a */,
 				6C8045A53A2B47C38AF29EBE /* libRNDeviceInfo-tvOS.a */,
+				9DA5F951CC644ECA82876928 /* libRNGestureHandler.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -897,6 +918,10 @@
 				{
 					ProductGroup = B18FC7F221FA3B0C00C0C780 /* Products */;
 					ProjectRef = 64B10A9B04464B28994B71A1 /* RNDeviceInfo.xcodeproj */;
+				},
+				{
+					ProductGroup = B18FC88021FA6E7600C0C780 /* Products */;
+					ProjectRef = AC3029A508D542C79217F2E7 /* RNGestureHandler.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1183,6 +1208,13 @@
 			remoteRef = B18FC81E21FA3B0C00C0C780 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		B18FC88421FA6E7600C0C780 /* libRNGestureHandler.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNGestureHandler.a;
+			remoteRef = B18FC88321FA6E7600C0C780 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		B1A5D35221D573D100DB582E /* libRNDeviceAngles.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1352,12 +1384,14 @@
 					"$(SRCROOT)/../node_modules/react-native-device-angles/RNDeviceAngles",
 					"$(SRCROOT)/../node_modules/react-native-device-angles/RNDeviceAngles",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 				);
 				INFOPLIST_FILE = FliparooTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1385,12 +1419,14 @@
 					"$(SRCROOT)/../node_modules/react-native-device-angles/RNDeviceAngles",
 					"$(SRCROOT)/../node_modules/react-native-device-angles/RNDeviceAngles",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 				);
 				INFOPLIST_FILE = FliparooTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1421,6 +1457,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-angles/RNDeviceAngles",
 					"$(SRCROOT)/../node_modules/react-native-device-angles/RNDeviceAngles",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 				);
 				INFOPLIST_FILE = Fliparoo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1450,6 +1487,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-angles/RNDeviceAngles",
 					"$(SRCROOT)/../node_modules/react-native-device-angles/RNDeviceAngles",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 				);
 				INFOPLIST_FILE = Fliparoo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1483,11 +1521,13 @@
 					"$(SRCROOT)/../node_modules/react-native-device-angles/RNDeviceAngles",
 					"$(SRCROOT)/../node_modules/react-native-device-angles/RNDeviceAngles",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 				);
 				INFOPLIST_FILE = "Fliparoo-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1523,11 +1563,13 @@
 					"$(SRCROOT)/../node_modules/react-native-device-angles/RNDeviceAngles",
 					"$(SRCROOT)/../node_modules/react-native-device-angles/RNDeviceAngles",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 				);
 				INFOPLIST_FILE = "Fliparoo-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1562,11 +1604,13 @@
 					"$(SRCROOT)/../node_modules/react-native-device-angles/RNDeviceAngles",
 					"$(SRCROOT)/../node_modules/react-native-device-angles/RNDeviceAngles",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 				);
 				INFOPLIST_FILE = "Fliparoo-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1601,11 +1645,13 @@
 					"$(SRCROOT)/../node_modules/react-native-device-angles/RNDeviceAngles",
 					"$(SRCROOT)/../node_modules/react-native-device-angles/RNDeviceAngles",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 				);
 				INFOPLIST_FILE = "Fliparoo-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
