@@ -7,66 +7,79 @@ class TrickPossibilities {
 
         this.tricks = [
             {
+                id: 'fs180shove',
                 name: 'fs shove-it! ' + getEmoji(),
                 delta: { pitch: 0, roll: 0, yaw: 180 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: 180 }
             },
             {
+                id: 'fs360shove',
                 name: 'fs 360\nshove-it! ' + getEmoji(),
                 delta: { pitch: 0, roll: 0, yaw: 360 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: 360 }
             },
             {
+                id: 'bs180shove',
                 name: 'bs shove-it! ' + getEmoji(),
                 delta: { pitch: 0, roll: 0, yaw: -180 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: 180 }
             },
             {
+                id: 'bs360shove',
                 name: 'bs 360\nshove-it! ' + getEmoji(),
                 delta: { pitch: 0, roll: 0, yaw: -360 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: 360 }
             },
             {
+                id: 'kickflip',
                 name: 'kickflip! ' + getEmoji(),
                 delta: { pitch: 0, roll: -360, yaw: 0 },
                 accumulated: { pitch: undefined, roll: 360, yaw: undefined }
             },
             {
+                id: 'doublekickflip',
                 name: 'double\nkickflip! ' + getEmoji(),
                 delta: { pitch: 0, roll: -720, yaw: 0 },
                 accumulated: { pitch: 90, roll: 720, yaw: 90 }
             },
             {
+                id: 'heelflip',
                 name: 'heelflip! ' + getEmoji(),
                 delta: { pitch: 0, roll: 360, yaw: 0 },
                 accumulated: { pitch: undefined, roll: 360, yaw: undefined }
             },
             {
+                id: 'doubleheelflip',
                 name: 'double\nheelflip! ' + getEmoji(),
                 delta: { pitch: 0, roll: 720, yaw: 0 },
                 accumulated: { pitch: 90, roll: 720, yaw: 90 }
             },
             {
+                id: '360flip',
                 name: 'tre flip! ' + getEmoji(),
                 delta: { pitch: 0, roll: -360, yaw: -360 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: undefined }
             },
             {
+                id: 'doublehardflip',
                 name: 'double\nhardflip' + getEmoji(),
                 delta: { pitch: 0, roll: -360, yaw: 360 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: undefined }
             },
             {
+                id: 'doublehardflip',
                 name: 'double\nhardflip' + getEmoji(),
                 delta: { pitch: 0, roll: -720, yaw: 0 },
                 accumulated: { pitch: 360, roll: 720, yaw: 360 }
             },
             {
+                id: 'laserflip',
                 name: 'laserflip ' + getEmoji(),
                 delta: { pitch: 0, roll: 360, yaw: 360 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: undefined }
             },
             {
+                id: '360inwardheelflip',
                 name: 'inward\n360 heelflip ' + getEmoji(),
                 delta: { pitch: 0, roll: 360, yaw: -360 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: undefined }
