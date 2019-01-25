@@ -21,7 +21,7 @@ export const StyleBook = StyleSheet.create({
     },
     background: {
         flex: 1,
-        backgroundColor: 'pink'
+        backgroundColor: 'black'
     },
     swiper: {
         backgroundColor: 'black'

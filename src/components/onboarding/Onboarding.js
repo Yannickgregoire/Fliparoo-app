@@ -33,8 +33,8 @@ class App extends Component {
                     loop={false}
                     bounces={true}
                     scrollEnabled={true}
-                    dotColor="rgba(255,255,255,.1)"
-                    activeDotColor="rgba(255,255,255,.5)"
+                    dotColor="rgba(255,255,255,.3)"
+                    activeDotColor="rgba(255,255,255,.8)"
                     showsPagination={true}
                     style={StyleBook.swiper}>
                     <Intro onNext={() => { this.handleNextSlide() }} />
