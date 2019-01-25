@@ -16,30 +16,35 @@ class TrickPossibilities {
             {
                 id: 'fs180shove',
                 name: 'fs shove-it',
+                color: COLORS[0],
                 delta: { pitch: 0, roll: 0, yaw: 180 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: 180 }
             },
             {
                 id: 'fs360shove',
                 name: 'fs 360\nshove-it',
+                color: COLORS[5],
                 delta: { pitch: 0, roll: 0, yaw: 360 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: 360 }
             },
             {
                 id: 'bs180shove',
                 name: 'bs shove-it',
+                color: COLORS[0],
                 delta: { pitch: 0, roll: 0, yaw: -180 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: 180 }
             },
             {
                 id: 'bs360shove',
                 name: 'bs 360\nshove-it',
+                color: COLORS[5],
                 delta: { pitch: 0, roll: 0, yaw: -360 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: 360 }
             },
             {
                 id: 'kickflip',
                 name: 'kickflip',
+                color: COLORS[0],
                 delta: { pitch: 0, roll: -360, yaw: 0 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: undefined }
             },
@@ -53,6 +58,7 @@ class TrickPossibilities {
             {
                 id: 'heelflip',
                 name: 'heelflip',
+                color: COLORS[0],
                 delta: { pitch: 0, roll: 360, yaw: 0 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: undefined }
             },
