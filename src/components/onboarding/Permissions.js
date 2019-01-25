@@ -15,8 +15,6 @@ class Permission extends Component {
         this.state = { selected: 'no' };
     }
 
-    componentDidMount() { }
-
     selectPermission = (permission) => {
         this.props.setPermission(permission);
     }
@@ -28,7 +26,7 @@ class Permission extends Component {
                     <View style={[StyleBook.container, StyleBook.scroll]}>
                         <View style={[StyleBook.content]}>
                             <Text style={StyleBook.body}>Would you like to send us your trick data? This way we can improve trick detection.</Text>
-                            <Text style={StyleBook.description}>We'll store your device id and accellerometer data. Find out why.</Text>
+                            <Text style={StyleBook.description}>We'll store your device id and accelerometer data. Find out why.</Text>
                             <View style={StyleBook.row}>
                                 <RadioButton value={false} text="no" description="thanks" selected={this.props.permission.value === false} icon="👎" onSelect={this.selectPermission} />
                                 <RadioButton value={true} text="yes" description="please" selected={this.props.permission.value === true} icon="👍" onSelect={this.selectPermission} />

@@ -5,7 +5,7 @@ import { StyleBook } from '../style/StyleBook'
 import { connect } from 'react-redux';
 import { setPermission, setStance } from '../../store/actions';
 
-import Button from '../ui/Button'
+import VersionNumber from 'react-native-version-number';
 import RadioButton from '../ui/RadioButton'
 
 class Settings extends Component {
@@ -39,11 +39,15 @@ class Settings extends Component {
                         </View>
                         <View style={[StyleBook.divider]}></View>
                         <Text style={StyleBook.body}>Send trick data</Text>
-                        <Text style={StyleBook.description}>We'll store your device id and accellerometer data. Find out whys</Text>
+                        <Text style={StyleBook.description}>We'll store your device id and accelerometer data. Find out why.</Text>
                         <View style={StyleBook.row}>
                             <RadioButton value={false} text="no" selected={this.props.permission.value === false} icon="👎" onSelect={this.selectPermission} />
                             <RadioButton value={true} text="yes" selected={this.props.permission.value === true} icon="👍" onSelect={this.selectPermission} />
                         </View>
+                        <View style={[StyleBook.divider]}></View>
+                        <Text style={{ ...StyleBook.description, opacity: .3 }}>
+                            Version {VersionNumber.appVersion}
+                        </Text>
                     </View>
                 </ScrollView>
             </View>
