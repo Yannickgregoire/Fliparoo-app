@@ -13,17 +13,26 @@ export const StyleBook = StyleSheet.create({
     scroll: {
         height: height
     },
+    content: {
+        flex: 1,
+        height: height,
+        justifyContent: 'center',
+        marginTop: -60
+    },
     row: {
         flexDirection: 'row',
         justifyContent: 'space-between'
+    },
+    divider: {
+        height: 32
     },
     heading: {
         fontFamily: 'Sofia Pro',
         fontWeight: 'bold',
         color: 'white',
-        fontSize: 48,
+        fontSize: 32,
         textAlign: 'left',
-        marginBottom: 18
+        marginBottom: 24
     },
     body: {
         fontFamily: 'Roboto',

@@ -17,9 +17,11 @@ export default class Intro extends Component {
             <View>
                 <ScrollView>
                     <View style={[StyleBook.container, StyleBook.scroll]}>
-                        <Text style={StyleBook.heading}>heyo!</Text>
-                        <Text style={StyleBook.body}>Thanks for checking out Fliparoo. 🎉</Text>
-                        <Text style={StyleBook.body}>Before we can start tricking, we need to know some things about you.</Text>
+                        <View style={[StyleBook.content]}>
+                            <Text style={StyleBook.heading}>heyo!</Text>
+                            <Text style={StyleBook.body}>Thanks for checking out Fliparoo. 🎉</Text>
+                            <Text style={StyleBook.body}>Before we can start tricking, we need to know some things about you.</Text>
+                        </View>
                     </View>
                 </ScrollView>
                 <Button style={StyleBook.buttonFixed} text="alright, let's go" onPress={this.props.onNext} />

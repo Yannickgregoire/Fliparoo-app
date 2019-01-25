@@ -26,15 +26,17 @@ class Stance extends Component {
             <View>
                 <ScrollView>
                     <View style={[StyleBook.container, StyleBook.scroll]}>
-                        <Text style={StyleBook.body}>Are you regular or goofy?</Text>
-                        <Text style={StyleBook.description}>Regular stance is righthanded. Goofy stance lefthanded.</Text>
-                        <View style={StyleBook.row}>
-                            <RadioButton value="regular" text="regular" selected={this.props.stance.value === 'regular'} icon="🙄" onSelect={this.selectStance} />
-                            <RadioButton value="goofy" text="goofy" selected={this.props.stance.value === 'goofy'} icon="🤪" onSelect={this.selectStance} />
+                        <View style={[StyleBook.content]}>
+                            <Text style={StyleBook.body}>Are you regular or goofy?</Text>
+                            <Text style={StyleBook.description}>Regular stance is righthanded. Goofy stance lefthanded.</Text>
+                            <View style={StyleBook.row}>
+                                <RadioButton value="regular" text="regular" selected={this.props.stance.value === 'regular'} icon="😗" onSelect={this.selectStance} />
+                                <RadioButton value="goofy" text="goofy" selected={this.props.stance.value === 'goofy'} icon="🤪" onSelect={this.selectStance} />
+                            </View>
                         </View>
                     </View>
                 </ScrollView>
-                <Button style={StyleBook.buttonFixed} text="next"  onPress={this.props.onNext} />
+                <Button style={StyleBook.buttonFixed} text="next" onPress={this.props.onNext} />
             </View>
         );
     }
