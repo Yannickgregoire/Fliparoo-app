@@ -123,7 +123,7 @@ class TrickDetector extends Component {
         const trick = TrickPossibilities.getTrick(delta, accumulated);
 
         if (trick) {
-            this.props.setTrick(trick);
+            this.props.setTrick({...trick, name: trick.name + ' ' + getEmoji()});
             if (this.props.permission.value === true) {
                 Api.postTrickData(trick, deltaArray);
             }
@@ -209,6 +209,12 @@ const styles = StyleSheet.create({
         color: 'white'
     }
 });
+
+const EMOJIS = ['🤘', '🔥', '👍', '🙌', '👏', '🤟', '🤙', '🎉', '✌️', '✨'];
+
+const getEmoji = () => {
+    return EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
+}
 
 const mapStateToProps = (state, ownProps) => ({
     trick: state.trick,
