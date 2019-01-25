@@ -10,6 +10,8 @@ import { DeviceAngles } from 'NativeModules';
 import Api from '../../api/Api';
 import TrickPossibilities from './TrickPossibilities';
 
+const EMOJIS = ['🤘', '🔥', '👍', '🙌', '👏', '🤟', '🤙', '🎉', '✌️', '✨'];
+
 class TrickDetector extends Component {
 
     constructor(props) {
@@ -123,7 +125,7 @@ class TrickDetector extends Component {
         const trick = TrickPossibilities.getTrick(delta, accumulated);
 
         if (trick) {
-            this.props.setTrick({...trick, name: trick.name + ' ' + getEmoji()});
+            this.props.setTrick({ ...trick, name: trick.name + ' ' + this.getEmoji() });
             if (this.props.permission.value === true) {
                 Api.postTrickData(trick, deltaArray);
             }
@@ -133,6 +135,10 @@ class TrickDetector extends Component {
         this.setState({ delta: delta, accumulated: accumulated });
 
     };
+
+    getEmoji = () => {
+        return EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
+    }
 
     getSmallestDifference = (diff) => {
         return diff += (diff > 180) ? -360 : (diff < -180) ? 360 : 0;
@@ -169,7 +175,7 @@ class TrickDetector extends Component {
     render() {
 
         // uncomment next line to hide angle data
-        // return null;
+        return null;
 
         return (
             <View style={styles.container}>
@@ -209,12 +215,6 @@ const styles = StyleSheet.create({
         color: 'white'
     }
 });
-
-const EMOJIS = ['🤘', '🔥', '👍', '🙌', '👏', '🤟', '🤙', '🎉', '✌️', '✨'];
-
-const getEmoji = () => {
-    return EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
-}
 
 const mapStateToProps = (state, ownProps) => ({
     trick: state.trick,

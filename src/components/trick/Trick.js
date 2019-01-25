@@ -13,12 +13,10 @@ export default class Trick extends Component {
         this.state = {};
     }
 
-    componentDidMount() { }
-
     render() {
         return (
             <View style={styles.container}>
-                <DoubleTap style={styles.container} doubleTap={() => { this.props.onDoubleTap() }}>
+                <DoubleTap doubleTap={() => { this.props.onDoubleTap() }} >
                     <TrickName />
                 </DoubleTap>
                 <TrickDetector />
@@ -29,6 +27,7 @@ export default class Trick extends Component {
 
 const styles = StyleSheet.create({
     container: {
+        overflow: 'hidden',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'

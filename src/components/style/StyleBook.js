@@ -19,6 +19,13 @@ export const StyleBook = StyleSheet.create({
         justifyContent: 'center',
         marginTop: -60
     },
+    background: {
+        flex: 1,
+        backgroundColor: 'pink'
+    },
+    swiper: {
+        backgroundColor: 'black'
+    },
     row: {
         flexDirection: 'row',
         justifyContent: 'space-between'
