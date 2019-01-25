@@ -1,4 +1,12 @@
 const MARGIN = 90;
+const COLORS = [
+    [ '#765d69','#8fb9a8', '#fefad4', '#fcd0ba', '#f1828d'],
+    [ '#344e5c','#4ab19d', '#efc958', '#e17a47', '#ef3d59'],
+    [ '#4d5e72','#3f6a8a', '#f1e6c1', '#f2cc8c', '#dda5b6'],
+    [ '#325d79','#9bd7d1', '#efeeee', '#f9a26c', '#f26627'],
+    [ '#475c7a','#685d79', '#ab6c82', '#d8737f', '#fcbb6d'],
+    [ '#305f72','#568ea6', '#f1d1b5', '#f0b7a4', '#f18c8e']
+]
 
 class TrickPossibilities {
 
@@ -38,6 +46,7 @@ class TrickPossibilities {
             {
                 id: 'doublekickflip',
                 name: 'double\nkickflip',
+                color: COLORS[4],
                 delta: { pitch: 0, roll: -720, yaw: 0 },
                 accumulated: { pitch: 90, roll: 720, yaw: 90 }
             },
@@ -50,36 +59,42 @@ class TrickPossibilities {
             {
                 id: 'doubleheelflip',
                 name: 'double\nheelflip',
+                color: COLORS[5],
                 delta: { pitch: 0, roll: 720, yaw: 0 },
                 accumulated: { pitch: 90, roll: 720, yaw: 90 }
             },
             {
                 id: '360flip',
                 name: 'tre flip',
+                color: COLORS[0],
                 delta: { pitch: 0, roll: -360, yaw: -360 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: undefined }
             },
             {
                 id: 'doublehardflip',
                 name: 'double\nhardflip',
+                color: COLORS[2],
                 delta: { pitch: 0, roll: -360, yaw: 360 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: undefined }
             },
             {
                 id: 'doublehardflip',
                 name: 'double\nhardflip',
+                color: COLORS[2],
                 delta: { pitch: 0, roll: -720, yaw: 0 },
                 accumulated: { pitch: 360, roll: 720, yaw: 360 }
             },
             {
                 id: 'laserflip',
                 name: 'laserflip',
+                color: COLORS[1],
                 delta: { pitch: 0, roll: 360, yaw: 360 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: undefined }
             },
             {
                 id: '360inwardheelflip',
                 name: 'inward\n360 heelflip',
+                color: COLORS[3],
                 delta: { pitch: 0, roll: 360, yaw: -360 },
                 accumulated: { pitch: undefined, roll: undefined, yaw: undefined }
             }

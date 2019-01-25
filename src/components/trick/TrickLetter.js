@@ -1,18 +1,44 @@
 import React, { Component } from 'react';
-import { Animated, Easing, StyleSheet, Text } from 'react-native';
+import { LayoutAnimation, Animated, Easing, StyleSheet, Text } from 'react-native';
+import { connect } from 'react-redux';
 
-export default class TrickName extends Component {
+class TrickLetter extends Component {
 
     constructor(props) {
         super(props);
         this.opacity = new Animated.Value(0);
+        this.state = { color: 'white' };
+        this.timeouts = [];
     }
 
     componentDidMount() {
         this.animate()
     }
 
+    componentWillUnmount() {
+        this.timeouts.map((timeout) => {
+            clearTimeout(timeout);
+            timeout = 0;
+            console.log('clear timeout ')
+        })
+    }
+
     animate = () => {
+
+        if (this.props.trick.color) {
+
+            const colors = this.props.trick.color.slice(0);
+            colors.push('white')
+
+            console.log(colors);
+            colors.map((color, index) => {
+                const timeout = setTimeout(() => {
+                    this.setState({ color })
+                }, 70 * index + this.props.index * 50)
+                this.timeouts.push(timeout)
+            })
+        }
+
         Animated.timing(
             this.opacity,
             {
@@ -35,7 +61,7 @@ export default class TrickName extends Component {
             <Animated.View style={[{
                 transform: [{ scaleX: this.opacity }, { scaleY: this.opacity }]
             }]}>
-                <Text style={[styles.letter, (this.isEmoji(this.props.letter)) ? styles.emoji : null]} >{this.props.letter}</Text>
+                <Text style={[styles.letter, (this.isEmoji(this.props.letter)) ? styles.emoji : null, { color: this.state.color }]} >{this.props.letter}</Text>
             </Animated.View>
         );
     }
@@ -47,11 +73,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         alignSelf: 'flex-start',
         color: 'white',
-        /*
-        textShadowColor: 'rgba(0, 0, 0, 0.15)',
-        textShadowOffset: { width: 0, height: 5 },
-        textShadowRadius: 0,
-        */
         fontSize: 64
     },
     emoji: {
@@ -59,3 +80,13 @@ const styles = StyleSheet.create({
         marginTop: -6
     }
 });
+
+const mapStateToProps = (state, ownProps) => ({
+    trick: state.trick
+});
+
+const ConnectedTrickLetter = connect(
+    mapStateToProps
+)(TrickLetter);
+
+export default ConnectedTrickLetter;
