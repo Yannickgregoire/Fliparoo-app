@@ -22,7 +22,7 @@ export default class Intro extends Component {
                         <Text style={StyleBook.body}>Before we can start tricking, we need to know some things about you.</Text>
                     </View>
                 </ScrollView>
-                <Button style={StyleBook.buttonFixed} text="alright, let's go" />
+                <Button style={StyleBook.buttonFixed} text="alright, let's go" onPress={this.props.onNext} />
             </View>
         );
     }

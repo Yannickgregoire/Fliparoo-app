@@ -34,7 +34,7 @@ class Permission extends Component {
                         </View>
                     </View>
                 </ScrollView>
-                <Button style={StyleBook.buttonFixed} text="next" />
+                <Button style={StyleBook.buttonFixed} text="next" onPress={this.props.onNext} />
             </View>
         );
     }

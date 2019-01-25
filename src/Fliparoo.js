@@ -20,6 +20,9 @@ const persistedReducer = persistReducer(persistConfig, CombinedReducers);
 const store = createStore(persistedReducer);
 const persistor = persistStore(store);
 
+// purge cache for development
+persistor.purge();
+
 export default class Fliparoo extends Component {
 
     render() {

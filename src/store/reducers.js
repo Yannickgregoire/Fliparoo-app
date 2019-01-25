@@ -2,7 +2,8 @@ import { combineReducers } from 'redux';
 import {
     SET_TRICK,
     SET_STANCE,
-    SET_PERMISSION
+    SET_PERMISSION,
+    SET_ONBOARDING_SKIP
 } from './actions';
 
 const initialTrickState = {
@@ -73,8 +74,31 @@ const permissionReducer = (state = initialPermissionState, action) => {
 
 };
 
+const initialOnboardingState = {
+    skip: false
+};
+
+const onboardingReducer = (state = initialOnboardingState, action) => {
+
+    switch (action.type) {
+
+        case SET_ONBOARDING_SKIP:
+            return {
+                ...state,
+                skip: action.skip
+            };
+            break;
+
+        default:
+            return state;
+            break;
+    }
+
+};
+
 export default combineReducers({
     trick: trickReducer,
     stance: stanceReducer,
-    permission: permissionReducer
+    permission: permissionReducer,
+    onboarding: onboardingReducer
 });
