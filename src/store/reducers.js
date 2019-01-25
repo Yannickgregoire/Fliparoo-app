@@ -7,7 +7,7 @@ import {
 } from './actions';
 
 const initialTrickState = {
-    name: 'none', background: '#f7e9a0', color: '#b9ae76'
+    name: '', background: '', color: ''
 };
 
 const trickReducer = (state = initialTrickState, action) => {
