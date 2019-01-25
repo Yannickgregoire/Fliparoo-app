@@ -18,7 +18,7 @@ class App extends Component {
         console.log(index, this.props.trickSlideNum)
         if (index === this.props.trickSlideNum && this.props.onboarding.skip === false) {
             this.props.setOnboardingSkip(true);
-            this.props.setTrick({name:'heelflip\nmaybe?'})
+            this.props.setTrick({name:'start flippin\' ✌️', color:[ '#344e5c','#4ab19d', '#efc958', '#e17a47', '#ef3d59']})
         }
     }
 

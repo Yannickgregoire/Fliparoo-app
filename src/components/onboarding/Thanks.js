@@ -19,7 +19,7 @@ export default class Thanks extends Component {
                     <View style={[StyleBook.container, StyleBook.scroll]}>
                         <View style={[StyleBook.content]}>
                             <Text style={StyleBook.heading}>🤟</Text>
-                            <Text style={StyleBook.body}>Alright, that's all we needed to know. If you ever want to adjust the previous settings, just double tap on the screen. This will show you the settings menu.</Text>
+                            <Text style={StyleBook.body}>Alright, that's all we needed to know. If you ever want to change your settings, double tap the trick screen. This will take you to the settings menu.</Text>
                         </View>
                     </View>
                 </ScrollView>
