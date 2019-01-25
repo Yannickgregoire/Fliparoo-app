@@ -19,7 +19,6 @@ class TrickLetter extends Component {
         this.timeouts.map((timeout) => {
             clearTimeout(timeout);
             timeout = 0;
-            console.log('clear timeout ')
         })
     }
 
@@ -30,7 +29,6 @@ class TrickLetter extends Component {
             const colors = this.props.trick.color.slice(0);
             colors.push('white')
 
-            console.log(colors);
             colors.map((color, index) => {
                 const timeout = setTimeout(() => {
                     this.setState({ color })
