@@ -4,6 +4,8 @@ import { StyleSheet, View } from 'react-native';
 import TrickDetector from './TrickDetector';
 import TrickName from './TrickName';
 
+import DoubleTap from '../ui/DoubleTap';
+
 export default class Trick extends Component {
 
     constructor(props) {
@@ -16,9 +18,11 @@ export default class Trick extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <TrickName />
+                <DoubleTap style={styles.container} doubleTap={() => { this.props.onDoubleTap() }}>
+                    <TrickName />
+                </DoubleTap>
                 <TrickDetector />
-            </View>
+            </View >
         );
     }
 };
@@ -29,4 +33,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     }
+
 });
