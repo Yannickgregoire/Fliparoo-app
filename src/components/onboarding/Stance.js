@@ -15,8 +15,6 @@ class Stance extends Component {
         this.state = { selected: 'regular' };
     }
 
-    componentDidMount() { }
-
     selectStance = (stance) => {
         this.props.setStance(stance);
     }

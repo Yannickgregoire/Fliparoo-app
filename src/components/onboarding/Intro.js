@@ -10,8 +10,6 @@ export default class Intro extends Component {
         this.state = {};
     }
 
-    componentDidMount() { }
-
     render() {
         return (
             <View>
