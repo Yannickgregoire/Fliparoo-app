@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { LayoutAnimation, StyleSheet, View } from 'react-native';
 import { StyleBook } from './style/StyleBook';
 
 import { connect } from 'react-redux';
@@ -10,6 +10,7 @@ import Trick from './trick/Trick';
 import Settings from './settings/Settings';
 
 import Swiper from 'react-native-swiper';
+import OpaqueOverlay from './ui/OpaqueOverlay';
 
 const ONBOARDING_SLIDE_INDEX = 0;
 const TRICK_SLIDE_INDEX = 1;
@@ -19,7 +20,7 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { index: 0 }
+        this.state = { index: 0 };
     }
 
     componentDidMount() {
@@ -56,6 +57,7 @@ class App extends Component {
                     <Trick onDoubleTap={() => { this.handleNextSlide() }} />
                     <Settings />
                 </Swiper>
+                <OpaqueOverlay />
             </View>
         );
     }
