@@ -10,8 +10,6 @@ export default class Thanks extends Component {
         this.state = {};
     }
 
-    componentDidMount() { }
-
     render() {
         return (
             <View>
@@ -19,7 +17,8 @@ export default class Thanks extends Component {
                     <View style={[StyleBook.container, StyleBook.scroll]}>
                         <View style={[StyleBook.content]}>
                             <Text style={StyleBook.heading}>🤟</Text>
-                            <Text style={StyleBook.body}>Alright, that's all we needed to know. If you ever want to change your settings, double tap the trick screen. This will take you to the settings menu.</Text>
+                            <Text style={StyleBook.body}>Alright, that's all we needed to know.</Text>
+                            <Text style={StyleBook.body}>If you ever want to change your settings, double tap the trick screen. This will take you to the settings menu.</Text>
                         </View>
                     </View>
                 </ScrollView>
