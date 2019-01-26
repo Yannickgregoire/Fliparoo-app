@@ -21,7 +21,7 @@ const store = createStore(persistedReducer);
 const persistor = persistStore(store);
 
 // purge cache for development
-persistor.purge();
+// persistor.purge();
 
 export default class Fliparooo extends Component {
 

@@ -39,7 +39,7 @@ class Settings extends Component {
                         </View>
                         <View style={[StyleBook.divider]}></View>
                         <Text style={StyleBook.body}>Send trick data</Text>
-                        <Text style={StyleBook.description}>We'll store your device id and accelerometer data. Find out why.</Text>
+                        <Text style={StyleBook.description}>We'll store your device id and accelerometer data.</Text>
                         <View style={StyleBook.row}>
                             <RadioButton value={false} text="no" selected={this.props.permission.value === false} icon="👎" onSelect={this.selectPermission} />
                             <RadioButton value={true} text="yes" selected={this.props.permission.value === true} icon="👍" onSelect={this.selectPermission} />
