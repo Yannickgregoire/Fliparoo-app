@@ -17,7 +17,7 @@ export default class Intro extends Component {
                     <View style={[StyleBook.container, StyleBook.scroll]}>
                         <View style={[StyleBook.content]}>
                             <Text style={StyleBook.heading}>👋</Text>
-                            <Text style={StyleBook.body}>Thanks for checking out Fliparoo.</Text>
+                            <Text style={StyleBook.body}>Thanks for checking out Fliparooo.</Text>
                             <Text style={StyleBook.body}>Before we can start tricking, we need to know some things about you.</Text>
                         </View>
                     </View>
