@@ -10,8 +10,6 @@ import { DeviceAngles } from 'NativeModules';
 import Api from '../../api/Api';
 import TrickPossibilities from './TrickPossibilities';
 
-const EMOJIS = ['🤘', '🔥', '👍', '🙌', '👏', '🤟', '🤙', '🎉', '✌️', '✨'];
-
 class TrickDetector extends Component {
 
     constructor(props) {
@@ -122,10 +120,10 @@ class TrickDetector extends Component {
 
         })
 
-        const trick = TrickPossibilities.getTrick(delta, accumulated);
+        const trick = TrickPossibilities.getTrick(delta, accumulated, this.rotation);
 
         if (trick) {
-            this.props.setTrick({ ...trick, name: trick.name + ' ' + this.getEmoji() });
+            this.props.setTrick(trick);
             if (this.props.permission.value === true) {
                 Api.postTrickData(trick, deltaArray);
             }
@@ -135,10 +133,6 @@ class TrickDetector extends Component {
         this.setState({ delta: delta, accumulated: accumulated });
 
     };
-
-    getEmoji = () => {
-        return EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
-    }
 
     getSmallestDifference = (diff) => {
         return diff += (diff > 180) ? -360 : (diff < -180) ? 360 : 0;
@@ -179,7 +173,6 @@ class TrickDetector extends Component {
 
         return (
             <View style={styles.container}>
-
                 <View style={styles.column}>
                     <Text style={styles.font}>p: {this.state.rotation.pitch}</Text>
                     <Text style={styles.font}>r: {this.state.rotation.roll}</Text>

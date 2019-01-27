@@ -1,12 +1,14 @@
 const MARGIN = 90;
+const EMOJIS = ['🤘', '🔥', '👍', '🙌', '👏', '🤟', '🤙', '🎉', '✌️', '✨'];
 const COLORS = [
-    [ '#765d69','#8fb9a8', '#fefad4', '#fcd0ba', '#f1828d'],
-    [ '#344e5c','#4ab19d', '#efc958', '#e17a47', '#ef3d59'],
-    [ '#4d5e72','#3f6a8a', '#f1e6c1', '#f2cc8c', '#dda5b6'],
-    [ '#325d79','#9bd7d1', '#efeeee', '#f9a26c', '#f26627'],
-    [ '#475c7a','#685d79', '#ab6c82', '#d8737f', '#fcbb6d'],
-    [ '#305f72','#568ea6', '#f1d1b5', '#f0b7a4', '#f18c8e']
+    ['#765d69', '#8fb9a8', '#fefad4', '#fcd0ba', '#f1828d'],
+    ['#344e5c', '#4ab19d', '#efc958', '#e17a47', '#ef3d59'],
+    ['#4d5e72', '#3f6a8a', '#f1e6c1', '#f2cc8c', '#dda5b6'],
+    ['#325d79', '#9bd7d1', '#efeeee', '#f9a26c', '#f26627'],
+    ['#475c7a', '#685d79', '#ab6c82', '#d8737f', '#fcbb6d'],
+    ['#305f72', '#568ea6', '#f1d1b5', '#f0b7a4', '#f18c8e']
 ]
+const FAILS = ['whoops', 'ouch', 'nope', 'nuhuh'];
 
 class TrickPossibilities {
 
@@ -18,7 +20,7 @@ class TrickPossibilities {
                 name: 'fs shove-it',
                 color: COLORS[0],
                 delta: { pitch: 0, roll: 0, yaw: 180 },
-                accumulated: { pitch: undefined, roll: undefined, yaw: 180 }
+                accumulated: { pitch: undefined, roll: 0, yaw: 180 }
             },
             {
                 id: 'fs360shove',
@@ -32,7 +34,7 @@ class TrickPossibilities {
                 name: 'bs shove-it',
                 color: COLORS[0],
                 delta: { pitch: 0, roll: 0, yaw: -180 },
-                accumulated: { pitch: undefined, roll: undefined, yaw: 180 }
+                accumulated: { pitch: undefined, roll: 0, yaw: 180 }
             },
             {
                 id: 'bs360shove',
@@ -68,6 +70,34 @@ class TrickPossibilities {
                 color: COLORS[5],
                 delta: { pitch: 0, roll: 720, yaw: 0 },
                 accumulated: { pitch: 90, roll: 720, yaw: 90 }
+            },
+            {
+                id: 'hardflip',
+                name: 'hardflip',
+                color: COLORS[1],
+                delta: { pitch: 0, roll: -360, yaw: 180 },
+                accumulated: { pitch: 180, roll: 360, yaw: 180 }
+            },
+            {
+                id: 'varialheelflip',
+                name: 'varial\nheelflip',
+                color: COLORS[2],
+                delta: { pitch: 0, roll: 360, yaw: 180 },
+                accumulated: { pitch: 180, roll: 360, yaw: 180 }
+            },
+            {
+                id: 'varialkickflip',
+                name: 'varial\nkickflip',
+                color: COLORS[3],
+                delta: { pitch: 0, roll: -360, yaw: -180 },
+                accumulated: { pitch: 180, roll: 360, yaw: 180 }
+            },
+            {
+                id: 'inwardheelflip',
+                name: 'inward\nheelflip',
+                color: COLORS[4],
+                delta: { pitch: 0, roll: 360, yaw: -180 },
+                accumulated: { pitch: 180, roll: 360, yaw: 180 }
             },
             {
                 id: '360flip',
@@ -108,10 +138,17 @@ class TrickPossibilities {
 
     }
 
-    getTrick = (delta, accumulated) => {
+    getTrick = (delta, accumulated, rotation) => {
 
-        return this.tricks.filter((trick) => {
+        if (isInRange(Math.abs(rotation.roll), 180, 'rotation')) {
+            return {
+                id: 'fail',
+                name: FAILS[Math.floor(Math.random() * FAILS.length)],
+                color: COLORS[4]
+            }
+        }
 
+        const trick = this.tricks.filter((trick) => {
             return (
                 isInRange(delta.pitch, trick.delta.pitch, 'delta') &&
                 isInRange(delta.roll, trick.delta.roll, 'delta') &&
@@ -120,15 +157,23 @@ class TrickPossibilities {
                 isInRange(accumulated.roll, trick.accumulated.roll, 'accumulated') &&
                 isInRange(accumulated.yaw, trick.accumulated.yaw, 'accumulated')
             );
-
         })[0];
+
+        if (trick) {
+            return { ...trick, name: trick.name + ' ' + getEmoji() };
+        }
+
     }
 
 }
 
+const getEmoji = () => {
+    return EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
+}
+
 const isInRange = (property, number, type) => {
 
-    const margin = (type === 'accumulated') ? MARGIN * 2 : MARGIN;
+    const margin = (type === 'accumulated') ? MARGIN * 2 : (type === 'rotation') ? MARGIN * .5 : MARGIN;
     return (typeof number === 'undefined') ? true : (property > number - margin && property < number + margin);
 
 }
