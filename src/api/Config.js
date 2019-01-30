@@ -1,3 +1,3 @@
 export default {
-    server: 'https://yannickgregoire.nl/project/fliparooo/'
+    server: 'https://fliparooo.com/api/post/'
 }
