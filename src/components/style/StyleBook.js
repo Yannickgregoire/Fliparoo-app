@@ -8,7 +8,6 @@ export const StyleBook = StyleSheet.create({
         width: '80%',
         marginLeft: '10%',
         justifyContent: 'center',
-        alignItems: 'stretch'
     },
     scroll: {
         height: height

@@ -29,7 +29,7 @@ class Settings extends Component {
         return (
             <View>
                 <ScrollView>
-                    <View style={[StyleBook.container, StyleBook.scroll]}>
+                    <View style={[StyleBook.container, StyleBook.scroll, {justifyContent: 'flex-start', paddingTop: 60}]}>
                         <Text style={StyleBook.heading}>Settings</Text>
                         <Text style={StyleBook.body}>Stance</Text>
                         <Text style={StyleBook.description}>Regular stance is righthanded. Goofy stance lefthanded.</Text>
@@ -45,7 +45,7 @@ class Settings extends Component {
                             <RadioButton value={true} text="yes" selected={this.props.permission.value === true} icon="👍" onSelect={this.selectPermission} />
                         </View>
                         <View style={[StyleBook.divider]}></View>
-                        <Text style={{ ...StyleBook.description, opacity: .3 }}>
+                        <Text style={{ ...StyleBook.description, opacity: .5 }}>
                             Version {VersionNumber.appVersion}
                         </Text>
                     </View>
