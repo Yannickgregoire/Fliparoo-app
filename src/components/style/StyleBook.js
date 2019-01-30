@@ -16,7 +16,7 @@ export const StyleBook = StyleSheet.create({
         flex: 1,
         height: height,
         justifyContent: 'center',
-        marginTop: -60
+        marginTop: -20
     },
     background: {
         flex: 1,

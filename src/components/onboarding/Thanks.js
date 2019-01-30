@@ -13,8 +13,8 @@ export default class Thanks extends Component {
     render() {
         return (
             <View>
-                <ScrollView>
-                    <View style={[StyleBook.container, StyleBook.scroll]}>
+                <ScrollView style={[StyleBook.scroll]}>
+                    <View style={[StyleBook.container]}>
                         <View style={[StyleBook.content]}>
                             <Text style={StyleBook.heading}>🤟</Text>
                             <Text style={StyleBook.body}>Alright, that's all we needed to know.</Text>

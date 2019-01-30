@@ -22,8 +22,8 @@ class Stance extends Component {
     render() {
         return (
             <View>
-                <ScrollView>
-                    <View style={[StyleBook.container, StyleBook.scroll]}>
+                <ScrollView style={[StyleBook.scroll]}>
+                    <View style={[StyleBook.container]}>
                         <View style={[StyleBook.content]}>
                             <Text style={StyleBook.body}>Are you regular or goofy?</Text>
                             <Text style={StyleBook.description}>Regular stance is righthanded. Goofy stance lefthanded.</Text>
