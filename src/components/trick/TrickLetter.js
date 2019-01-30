@@ -32,7 +32,7 @@ class TrickLetter extends Component {
             colors.map((color, index) => {
                 const timeout = setTimeout(() => {
                     this.setState({ color })
-                }, 70 * index + this.props.index * 50)
+                }, 60 * index + this.props.index * 50)
                 this.timeouts.push(timeout)
             })
         }

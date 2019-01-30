@@ -33,7 +33,7 @@ class App extends Component {
         this.setState({ index });
         if (index === TRICK_SLIDE_INDEX && this.props.onboarding.skip === false) {
             this.props.setOnboardingSkip(true);
-            this.props.setTrick({ name: 'start flippin\' ✌️', color: ['#344e5c', '#4ab19d', '#efc958', '#e17a47', '#ef3d59'] })
+            this.props.setTrick({ name: 'start flippin\' ✌️', color: ['#263e4a', '#49b19d', '#e17a47', '#ef3e59', '#f2bc42'] })
         }
     }
 
