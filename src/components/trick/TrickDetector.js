@@ -10,6 +10,9 @@ import { DeviceAngles } from 'NativeModules';
 import Api from '../../api/Api';
 import TrickPossibilities from './TrickPossibilities';
 
+RECORD_DELTA_START_MIN = 10;
+RECORD_DELTA_STOP_MIN = 1;
+
 class TrickDetector extends Component {
 
     constructor(props) {
@@ -74,11 +77,11 @@ class TrickDetector extends Component {
 
             })
 
-            if ((Math.abs(delta.pitch) > 10 || Math.abs(delta.roll) > 10 || Math.abs(delta.yaw) > 10) && this.state.recording === false) {
+            if ((Math.abs(delta.pitch) > RECORD_DELTA_START_MIN || Math.abs(delta.roll) > RECORD_DELTA_START_MIN || Math.abs(delta.yaw) > RECORD_DELTA_START_MIN) && this.state.recording === false) {
                 this.setState({ recording: true, background: '#b4fd94', color: '#d7ffc5' });
             }
 
-            if ((Math.abs(delta.pitch) < 1 && Math.abs(delta.roll) < 1 && Math.abs(delta.yaw) < 1) && this.state.recording === true) {
+            if ((Math.abs(delta.pitch) < RECORD_DELTA_STOP_MIN && Math.abs(delta.roll) < RECORD_DELTA_STOP_MIN && Math.abs(delta.yaw) < RECORD_DELTA_STOP_MIN) && this.state.recording === true) {
                 this.setState({ recording: false, background: '#a8d1e7', color: '#7b98a8' });
                 this.checkTrick();
             }
@@ -169,7 +172,7 @@ class TrickDetector extends Component {
     render() {
 
         // uncomment next line to hide angle data
-        return null;
+        // return null;
 
         return (
             <View style={styles.container}>

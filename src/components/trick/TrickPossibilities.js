@@ -1,4 +1,4 @@
-const MARGIN = 80;
+const MARGIN = 90;
 const EMOJIS = ['🤘', '🔥', '👍', '🙌', '👏', '🤟', '🤙', '🎉', '✌️', '✨'];
 const COLORS = ['#263e4a', '#e17a47', '#49b19d',  '#ef3e59', '#f2bc42'];
 const FAILS = ['whoops', 'ouch', 'nope', 'nuhuh'];
@@ -43,7 +43,7 @@ const TRICKS = [
         name: 'double\nkickflip',
         color: COLORS,
         delta: { pitch: 0, roll: -720, yaw: 0 },
-        accumulated: { pitch: 90, roll: 720, yaw: 90 }
+        accumulated: { pitch: 90, roll: 900, yaw: 90 }
     },
     {
         id: 'heelflip',
@@ -121,7 +121,14 @@ const TRICKS = [
         color: COLORS,
         delta: { pitch: 0, roll: 360, yaw: -360 },
         accumulated: { pitch: undefined, roll: undefined, yaw: undefined }
-    }
+    },
+    {
+        id: '360inwardheelflip',
+        name: 'inward\n360 heelflip',
+        color: COLORS,
+        delta: { pitch: 0, roll: 720, yaw: 0 },
+        accumulated: { pitch: 360, roll: 720, yaw: 360 }
+    },
 ]
 
 class TrickPossibilities {
@@ -163,7 +170,7 @@ const getEmoji = () => {
 
 const isInRange = (property, number, type) => {
 
-    const margin = (type === 'accumulated') ? MARGIN * 2 : (type === 'rotation') ? MARGIN * .5 : MARGIN;
+    const margin = (type === 'accumulated') ? MARGIN * 2 : (type === 'rotation') ? MARGIN * .8 : MARGIN;
     return (typeof number === 'undefined') ? true : (property > number - margin && property < number + margin);
 
 }
