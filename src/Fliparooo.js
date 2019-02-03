@@ -14,6 +14,7 @@ import App from './components/App';
 const persistConfig = {
     key: 'root',
     storage,
+    blacklist: ['trick']
 }
 
 const persistedReducer = persistReducer(persistConfig, CombinedReducers);

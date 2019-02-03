@@ -26,19 +26,27 @@ class App extends Component {
     componentDidMount() {
         if (this.props.onboarding.skip === true) {
             this.setState({ index: TRICK_SLIDE_INDEX });
+            if (this.props.trick.name === '') {
+                this.setInitialTrick();
+            }
         }
+        
     }
 
     handleIndexChanged = (index) => {
         this.setState({ index });
         if (index === TRICK_SLIDE_INDEX && this.props.onboarding.skip === false) {
             this.props.setOnboardingSkip(true);
-            this.props.setTrick({ name: 'start flippin\' ✌️', color: ['#263e4a', '#49b19d', '#e17a47', '#ef3e59', '#f2bc42'] })
+            this.setInitialTrick();
         }
     }
 
     handleNextSlide = () => {
         this.swiper.scrollBy(1);
+    }
+
+    setInitialTrick = () => {
+        this.props.setTrick({ name: 'start flippin\' ✌️', color: ['#263e4a', '#49b19d', '#e17a47', '#ef3e59', '#f2bc42'] });
     }
 
     render() {
@@ -66,7 +74,8 @@ class App extends Component {
 const styles = StyleSheet.create({});
 
 const mapStateToProps = (state, ownProps) => ({
-    onboarding: state.onboarding
+    onboarding: state.onboarding,
+    trick: state.trick
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
