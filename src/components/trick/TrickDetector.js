@@ -172,7 +172,7 @@ class TrickDetector extends Component {
     render() {
 
         // uncomment next line to hide angle data
-        // return null;
+        return null;
 
         return (
             <View style={styles.container}>
