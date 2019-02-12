@@ -1,13 +1,14 @@
 import { combineReducers } from 'redux';
 import {
     SET_TRICK,
+    SET_TRICK_ENABLED,
     SET_STANCE,
     SET_PERMISSION,
     SET_ONBOARDING_SKIP
 } from './actions';
 
 const initialTrickState = {
-    name: '', background: '', color: ''
+    name: '', background: '', color: '', enabled: false
 };
 
 const trickReducer = (state = initialTrickState, action) => {
@@ -20,6 +21,13 @@ const trickReducer = (state = initialTrickState, action) => {
                 name: action.name,
                 background: action.background,
                 color: action.color
+            };
+            break;
+
+        case SET_TRICK_ENABLED:
+            return {
+                ...state,
+                enabled: action.enabled
             };
             break;
 

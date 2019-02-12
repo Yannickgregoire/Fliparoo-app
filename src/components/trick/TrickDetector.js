@@ -35,22 +35,35 @@ class TrickDetector extends Component {
             recording: false
         };
 
-        this.angleData = [];
         this.acceleration = [];
         this.accelerationInterval;
-
-    }
-
-    componentDidMount() {
+        this.angleData = [];
+        this.angleEvent;
 
         DeviceAngles.setDeviceMotionUpdateInterval(.01);
-        DeviceAngles.startMotionUpdates();
-
-        DeviceEventEmitter.addListener('AnglesData', (data) => { this.handleAnglesData(data) });
-
-        this.startAccelerationDetection();
 
     }
+
+    componentDidUpdate(prevProps, prevState) {
+
+        if (this.props.trick.enabled !== prevProps.trick.enabled) {
+
+            if (this.props.trick.enabled === true) {
+
+                DeviceAngles.startMotionUpdates();
+                this.angleEvent = DeviceEventEmitter.addListener('AnglesData', (data) => { this.handleAnglesData(data) });
+                this.startAccelerationDetection();
+
+            } else {
+
+                DeviceAngles.stopMotionUpdates();
+                this.stopAccelerationDetection();
+                this.angleEvent.remove();
+            }
+
+        }
+
+    };
 
     startAccelerationDetection = () => {
 
@@ -88,7 +101,11 @@ class TrickDetector extends Component {
 
         }, 10)
 
-    }
+    };
+
+    stopAccelerationDetection = () => {
+        clearInterval(this.accelerationInterval);
+    };
 
     checkTrick = () => {
 
@@ -133,7 +150,7 @@ class TrickDetector extends Component {
         }
 
         this.angleData = [];
-        this.setState({ delta: delta, accumulated: accumulated });
+        this.setState({ delta: delta, accumulated: accumulated, rotation: this.rotation });
 
     };
 
@@ -164,8 +181,6 @@ class TrickDetector extends Component {
         if (this.state.recording === true) {
             this.angleData.push(this.rotation);
         }
-
-        this.setState({ rotation: this.rotation });
 
     };
 

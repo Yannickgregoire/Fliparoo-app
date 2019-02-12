@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { LayoutAnimation, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { StyleBook } from './style/StyleBook';
 
 import { connect } from 'react-redux';
-import { setOnboardingSkip, setTrick } from '../store/actions';
+import { setOnboardingSkip, setTrick, setTrickEnabled } from '../store/actions';
 
+import ActiveState from './activestate/ActiveState';
 import Onboarding from './onboarding/Onboarding';
 import Trick from './trick/Trick';
 import Settings from './settings/Settings';
@@ -30,15 +31,22 @@ class App extends Component {
                 this.setInitialTrick();
             }
         }
-        
     }
 
     handleIndexChanged = (index) => {
+
         this.setState({ index });
-        if (index === TRICK_SLIDE_INDEX && this.props.onboarding.skip === false) {
-            this.props.setOnboardingSkip(true);
-            this.setInitialTrick();
+
+        if (index === TRICK_SLIDE_INDEX) {
+            this.props.setTrickEnabled(true);
+            if (this.props.onboarding.skip === false) {
+                this.props.setOnboardingSkip(true);
+                this.setInitialTrick();
+            }
+        } else {
+            this.props.setTrickEnabled(false);
         }
+
     }
 
     handleNextSlide = () => {
@@ -61,10 +69,11 @@ class App extends Component {
                     loop={false}
                     bounces={true}
                     style={StyleBook.swiper}>
-                    <Onboarding onStart={() => { this.handleNextSlide() }} />
-                    <Trick onDoubleTap={() => { this.handleNextSlide() }} />
+                    <Onboarding onStart={this.handleNextSlide} />
+                    <Trick onDoubleTap={this.handleNextSlide} />
                     <Settings />
                 </Swiper>
+                <ActiveState />
                 <OpaqueOverlay />
             </View>
         );
@@ -84,6 +93,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     },
     setTrick: (trick) => {
         dispatch(setTrick(trick));
+    },
+    setTrickEnabled: (enabled) => {
+        dispatch(setTrickEnabled(enabled));
     }
 });
 
