@@ -29,7 +29,7 @@ class Settings extends Component {
         return (
             <View>
                 <ScrollView style={[StyleBook.scroll]}>
-                    <View style={[StyleBook.container, { justifyContent: 'flex-start', paddingTop: 60 }]}>
+                    <View style={[StyleBook.container, { justifyContent: 'flex-start', paddingTop: 80 }]}>
                         <Text style={StyleBook.heading}>Settings</Text>
                         <Text style={StyleBook.body}>Stance</Text>
                         <Text style={StyleBook.description}>Regular stance is righthanded. Goofy stance lefthanded.</Text>
@@ -39,7 +39,7 @@ class Settings extends Component {
                         </View>
                         <View style={[StyleBook.divider]}></View>
                         <Text style={StyleBook.body}>Send trick data</Text>
-                        <Text style={StyleBook.description}>We'll store your device id and accelerometer data.</Text>
+                        <Text style={StyleBook.description}>We'll store a UUID and your accelerometer data once a trick is detected.</Text>
                         <View style={StyleBook.row}>
                             <RadioButton value={false} text="no" selected={this.props.permission.value === false} icon="👎" onSelect={this.selectPermission} />
                             <RadioButton value={true} text="yes" selected={this.props.permission.value === true} icon="👍" onSelect={this.selectPermission} />

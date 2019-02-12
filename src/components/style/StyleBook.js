@@ -91,7 +91,7 @@ export const StyleBook = StyleSheet.create({
         position: 'absolute',
         width: '60%',
         left: '20%',
-        bottom: 60,
+        bottom: 80,
     },
     buttonRadio: {
         width: '100%',
