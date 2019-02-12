@@ -16,7 +16,7 @@ export default class Trick extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <DoubleTap style={styles.container} doubleTap={() => { this.props.onDoubleTap() }} >
+                <DoubleTap style={styles.container} doubleTap={this.props.onDoubleTap} >
                     <TrickName />
                 </DoubleTap>
                 <TrickDetector />

@@ -21,7 +21,7 @@ class TrickName extends Component {
 
     renderLetters = (line) => {
         return [...line].map((letter, index) => {
-            return <TrickLetter key={Date.parse(new Date()) + '-' + line + '-' + index} letter={letter} index={index} isLast={(index === line.length - 1)} />
+            return <TrickLetter key={line + '-' + index} letter={letter} index={index} isLast={(index === line.length - 1)} />
         })
     }
 

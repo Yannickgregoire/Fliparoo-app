@@ -36,11 +36,12 @@ class App extends Component {
                     dotColor="rgba(255,255,255,.3)"
                     activeDotColor="rgba(255,255,255,.8)"
                     showsPagination={true}
+                    paginationStyle={{bottom: 45}}
                     style={StyleBook.swiper}>
-                    <Intro onNext={() => { this.handleNextSlide() }} />
-                    <Stance onNext={() => { this.handleNextSlide() }} />
-                    <Permissions onNext={() => { this.handleNextSlide() }} />
-                    <Thanks onNext={() => { this.props.onStart() }} />
+                    <Intro onNext={this.handleNextSlide} />
+                    <Stance onNext={this.handleNextSlide} />
+                    <Permissions onNext={this.handleNextSlide} />
+                    <Thanks onNext={this.props.onStart} />
                 </Swiper>
             </View>
         );
