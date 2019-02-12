@@ -95,15 +95,15 @@ const TRICKS = [
         accumulated: { pitch: undefined, roll: undefined, yaw: undefined }
     },
     {
-        id: 'doublehardflip',
-        name: 'double\nhardflip',
+        id: '360hardflip',
+        name: '360\nhardflip',
         color: COLORS,
         delta: { pitch: 0, roll: -360, yaw: 360 },
         accumulated: { pitch: undefined, roll: undefined, yaw: undefined }
     },
     {
-        id: 'doublehardflip',
-        name: 'double\nhardflip',
+        id: '360hardflip',
+        name: '360\nhardflip',
         color: COLORS,
         delta: { pitch: 0, roll: -720, yaw: 0 },
         accumulated: { pitch: 360, roll: 720, yaw: 360 }
