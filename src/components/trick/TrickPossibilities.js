@@ -1,6 +1,6 @@
 const MARGIN = 90;
 const EMOJIS = ['🤘', '🔥', '👍', '🙌', '👏', '🤟', '🤙', '🎉', '✌️', '✨'];
-const COLORS = ['#263e4a', '#e17a47', '#49b19d',  '#ef3e59', '#f2bc42'];
+const COLORS = ['#344e5c', '#e17a47', '#4ab19d',  '#ef3d59', '#efc959'];
 const FAILS = ['whoops', 'ouch', 'nope', 'nuhuh'];
 const TRICKS = [
     {
@@ -169,10 +169,8 @@ const getEmoji = () => {
 }
 
 const isInRange = (property, number, type) => {
-
     const margin = (type === 'accumulated') ? MARGIN * 2 : (type === 'rotation') ? MARGIN * .8 : MARGIN;
     return (typeof number === 'undefined') ? true : (property > number - margin && property < number + margin);
-
 }
 
 export default new TrickPossibilities();

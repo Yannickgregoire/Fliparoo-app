@@ -4,7 +4,10 @@ import {
     SET_TRICK_ENABLED,
     SET_STANCE,
     SET_PERMISSION,
-    SET_ONBOARDING_SKIP
+    SET_ONBOARDING_SKIP,
+    ADD_ACHIEVEMENT,
+    ADD_TRICKLIST,
+    INCREMENT_TRICKCOUNT
 } from './actions';
 
 const initialTrickState = {
@@ -104,9 +107,48 @@ const onboardingReducer = (state = initialOnboardingState, action) => {
 
 };
 
+const initialAchievementsState = {
+    achievements: [],
+    trickList: [],
+    trickCount: 0,
+};
+
+const achievementsReducer = (state = initialAchievementsState, action) => {
+
+    switch (action.type) {
+
+        case ADD_ACHIEVEMENT:
+            return {
+                ...state,
+                achievements: [...state.achievements, action.achievement]
+            };
+            break;
+
+        case ADD_TRICKLIST:
+            return {
+                ...state,
+                trickList: [...trickList.arr, action.trick]
+            };
+            break;
+
+        case INCREMENT_TRICKCOUNT:
+            return {
+                ...state,
+                trickCount: state.trickCount + 1
+            };
+            break;
+
+        default:
+            return state;
+            break;
+    }
+
+};
+
 export default combineReducers({
     trick: trickReducer,
     stance: stanceReducer,
     permission: permissionReducer,
-    onboarding: onboardingReducer
+    onboarding: onboardingReducer,
+    achievements: achievementsReducer
 });

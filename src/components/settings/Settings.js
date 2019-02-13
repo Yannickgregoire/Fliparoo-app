@@ -12,10 +12,7 @@ class Settings extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { selected: 'no' };
     }
-
-    componentDidMount() { }
 
     selectPermission = (permission) => {
         this.props.setPermission(permission);

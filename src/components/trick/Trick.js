@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import Achievements from '../achievements/Achievements';
 import TrickDetector from './TrickDetector';
 import TrickName from './TrickName';
 
@@ -19,6 +20,7 @@ export default class Trick extends Component {
                 <DoubleTap style={styles.container} doubleTap={this.props.onDoubleTap} >
                     <TrickName />
                 </DoubleTap>
+                <Achievements/>
                 <TrickDetector />
             </View >
         );

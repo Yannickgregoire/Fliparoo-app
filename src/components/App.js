@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, StatusBar } from 'react-native';
 import { StyleBook } from './style/StyleBook';
 
 import { connect } from 'react-redux';
@@ -54,12 +54,17 @@ class App extends Component {
     }
 
     setInitialTrick = () => {
-        this.props.setTrick({ name: 'start flippin\' ✌️', color: ['#263e4a', '#49b19d', '#e17a47', '#ef3e59', '#f2bc42'] });
+        this.props.setTrick({ name: 'start flippin\' ✌️', color: ['#344e5c', '#e17a47', '#4ab19d', '#ef3d59', '#efc959'] });
     }
 
     render() {
         return (
             <View style={StyleBook.background}>
+                <StatusBar
+                    hidden={(this.state.index === TRICK_SLIDE_INDEX)}
+                    animated={true}
+                    showHideTransition="slide"
+                    barStyle="light-content" />
                 <Swiper
                     ref={swiper => this.swiper = swiper}
                     onIndexChanged={(index) => { this.handleIndexChanged(index) }}

@@ -6,7 +6,7 @@ class TrickLetter extends Component {
 
     constructor(props) {
         super(props);
-        this.opacity = new Animated.Value(0);
+        this.animation = new Animated.Value(0);
         this.state = { color: 'white' };
         this.timeouts = [];
     }
@@ -38,7 +38,7 @@ class TrickLetter extends Component {
         }
 
         Animated.timing(
-            this.opacity,
+            this.animation,
             {
                 toValue: 1,
                 duration: 1000,
@@ -57,7 +57,7 @@ class TrickLetter extends Component {
     render() {
         return (
             <Animated.View style={[{
-                transform: [{ scaleX: this.opacity }, { scaleY: this.opacity }]
+                transform: [{ scaleX: this.animation }, { scaleY: this.animation }]
             }]}>
                 <Text style={[styles.letter, (this.isEmoji(this.props.letter)) ? styles.emoji : null, { color: this.state.color }]} >{this.props.letter}</Text>
             </Animated.View>

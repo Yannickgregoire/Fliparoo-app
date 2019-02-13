@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { connect } from 'react-redux';
-import { setTrick } from '../../store/actions';
+import { setTrick, addTrickList, incrementTrickCount } from '../../store/actions';
 
 import { DeviceEventEmitter } from 'react-native';
 import { DeviceAngles } from 'NativeModules';
@@ -144,6 +144,7 @@ class TrickDetector extends Component {
 
         if (trick) {
             this.props.setTrick(trick);
+            this.props.incrementTrickCount();
             if (this.props.permission.value === true) {
                 Api.postTrickData(trick, deltaArray);
             }
@@ -236,6 +237,12 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
     setTrick: (trick) => {
         dispatch(setTrick(trick));
+    },
+    addTrickList: (trick) => {
+        dispatch(addTrickList(trick));
+    },
+    incrementTrickCount: () => {
+        dispatch(incrementTrickCount());
     }
 });
 

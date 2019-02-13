@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { StatusBar } from 'react-native';
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -30,9 +29,6 @@ export default class Fliparooo extends Component {
         return (
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
-                    <StatusBar
-                        barStyle="light-content"
-                    />
                     <App />
                 </PersistGate>
             </Provider>
