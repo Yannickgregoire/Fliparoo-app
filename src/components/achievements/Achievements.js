@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { StyleBook } from '../style/StyleBook'
+import { width, height } from '../style/StyleBook'
 
 import { connect } from 'react-redux';
 import { addAchievement } from '../../store/actions';
@@ -65,14 +65,15 @@ class Achievements extends Component {
     };
 
     renderAchievements = () => {
-        return this.state.achievements.map((achievement) => {
+        return this.state.achievements.map((achievement, index) => {
             return <Achievement key={achievement.id} title={achievement.title} />
         })
     };
 
     render() {
+        const styleRotation = (this.props.stance.value === 'regular') ? { transform: [{ rotate: '90deg' }] } : { transform: [{ rotate: '-90deg' }] };
         return (
-            <View style={[styles.achievement]} pointerEvents="none">
+            <View style={[styles.achievements, styleRotation]} pointerEvents="none">
                 {this.renderAchievements()}
             </View>
         );
@@ -80,12 +81,10 @@ class Achievements extends Component {
 };
 
 const styles = StyleSheet.create({
-    achievement: {
+    achievements: {
         position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
+        width: height,
+        height: width,
         justifyContent: 'flex-start',
         alignItems: 'flex-end'
     }
@@ -99,7 +98,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
     addAchievement: (achievement) => {
         dispatch(addAchievement(achievement));
-    },
+    }
 });
 
 const ConnectedAchievements = connect(
