@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Animated, Easing } from 'react-native';
-import { StyleBook } from '../style/StyleBook'
+import { StyleBook } from '../../style/StyleBook'
 
 import { connect } from 'react-redux';
 
@@ -10,7 +10,7 @@ class Achievement extends Component {
         super(props);
         this.animation = new Animated.Value(0);
         this.rotation = new Animated.Value(0);
-        this.randomRotation = Math.round(Math.random() * 30 + 30) + 'deg';
+        this.randomRotation = Math.round(Math.random() * 20 + 20) + 'deg';
     }
 
     componentDidMount() {
@@ -23,9 +23,9 @@ class Achievement extends Component {
             this.animation,
             {
                 toValue: 1,
-                duration: 1200,
+                duration: 600,
                 delay: 1000,
-                easing: Easing.elastic(4),
+                easing: Easing.elastic(1),
                 useNativeDriver: true
             }
         ).start()
@@ -34,9 +34,9 @@ class Achievement extends Component {
             this.rotation,
             {
                 toValue: 1,
-                duration: 2000,
+                duration: 1800,
                 delay: 1000,
-                easing: Easing.elastic(6),
+                easing: Easing.elastic(8),
                 useNativeDriver: true
             }
         ).start()

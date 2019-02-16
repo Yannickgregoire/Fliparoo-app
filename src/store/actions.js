@@ -5,6 +5,7 @@ export const SET_PERMISSION = 'SET_PERMISSION';
 export const SET_ONBOARDING_SKIP = 'SET_ONBOARDING_SKIP';
 export const ADD_ACHIEVEMENT = 'ADD_ACHIEVEMENT';
 export const ADD_TRICKLIST = 'ADD_TRICKLIST';
+export const ADD_TRICKLIST_TOTAL = 'ADD_TRICKLIST_TOTAL';
 export const INCREMENT_TRICKCOUNT = 'INCREMENT_TRICKCOUNT';
 
 export const setTrick = (trick) => ({
@@ -39,6 +40,11 @@ export const addAchievement = (achievement) => ({
 
 export const addTrickList = (trick) => ({
     type: ADD_TRICKLIST,
+    trick
+});
+
+export const addTrickListTotal = (trick) => ({
+    type: ADD_TRICKLIST_TOTAL,
     trick
 });
 

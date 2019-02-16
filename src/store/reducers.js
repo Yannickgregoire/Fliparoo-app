@@ -7,6 +7,7 @@ import {
     SET_ONBOARDING_SKIP,
     ADD_ACHIEVEMENT,
     ADD_TRICKLIST,
+    ADD_TRICKLIST_TOTAL,
     INCREMENT_TRICKCOUNT
 } from './actions';
 
@@ -110,6 +111,7 @@ const onboardingReducer = (state = initialOnboardingState, action) => {
 const initialAchievementsState = {
     achievements: [],
     trickList: [],
+    trickListTotal: [],
     trickCount: 0,
 };
 
@@ -127,8 +129,21 @@ const achievementsReducer = (state = initialAchievementsState, action) => {
         case ADD_TRICKLIST:
             return {
                 ...state,
-                trickList: [...trickList.arr, action.trick]
+                trickList: [...state.trickList, action.trick]
             };
+            break;
+
+        case ADD_TRICKLIST_TOTAL:
+
+            console.log( state.trickListTotal.filter((trick) => trick.id === action.trick.id).length )
+            if (state.trickListTotal.filter((trick) => trick.id === action.trick.id).length === 0) {
+                return {
+                    ...state,
+                    trickListTotal: [...state.trickListTotal, action.trick]
+                };
+            } else {
+                return state;
+            }
             break;
 
         case INCREMENT_TRICKCOUNT:
