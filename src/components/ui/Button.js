@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, StyleSheet, View, Text } from 'react-native';
-import { StyleBook } from '../style/StyleBook'
+import { StyleBook } from '../../style/StyleBook'
 
 export default class Button extends Component {
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { StyleBook } from '../style/StyleBook'
+import { StyleBook } from '../../style/StyleBook'
 
 export default class RadioButton extends Component {
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { StyleBook } from '../style/StyleBook';
+import { StyleBook } from '../../style/StyleBook';
 
 import { connect } from 'react-redux';
 import { setOnboardingSkip, setTrick } from '../../store/actions';

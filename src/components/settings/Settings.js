@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
-import { StyleBook } from '../style/StyleBook'
+import { StyleBook } from '../../style/StyleBook'
 
 import { connect } from 'react-redux';
 import { setPermission, setStance } from '../../store/actions';

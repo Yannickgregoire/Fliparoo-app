@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, StatusBar } from 'react-native';
-import { StyleBook } from './style/StyleBook';
+import { StyleBook } from '../style/StyleBook';
 
 import { connect } from 'react-redux';
 import { setOnboardingSkip, setTrick, setTrickEnabled } from '../store/actions';
@@ -54,7 +54,7 @@ class App extends Component {
     }
 
     setInitialTrick = () => {
-        this.props.setTrick({ name: 'start flippin\' ✌️', color: ['#344e5c', '#e17a47', '#4ab19d', '#ef3d59', '#efc959'] });
+        this.props.setTrick({ name: 'now flip me ✌️', color: ['#344e5c', '#e17a47', '#4ab19d', '#ef3d59', '#efc959'] });
     }
 
     render() {

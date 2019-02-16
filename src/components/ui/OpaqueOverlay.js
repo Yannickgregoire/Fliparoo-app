@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { LayoutAnimation, StyleSheet, View } from 'react-native';
-import { StyleBook } from '../style/StyleBook';
+import { StyleBook } from '../../style/StyleBook';
 
 export default class App extends Component {
 
