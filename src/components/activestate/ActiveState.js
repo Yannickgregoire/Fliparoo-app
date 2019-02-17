@@ -22,7 +22,7 @@ class ActiveState extends Component {
     handleAppStateChange = (nextAppState) => {
         if ( this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
             this.props.setTrickEnabled(true);
-        } else {
+        } else if ( this.state.appState === 'active' && nextAppState.match(/inactive|background/)) {
             this.props.setTrickEnabled(false);
         }
         this.setState({ appState: nextAppState });
