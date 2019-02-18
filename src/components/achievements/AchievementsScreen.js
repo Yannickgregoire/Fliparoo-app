@@ -48,10 +48,7 @@ class Achievements extends Component {
             },
         ]
 
-
         this.achievements = this.achievements.map(x => Object.assign(x, ACHIEVEMENTS.find(y => y.id == x.id)));
-
-        console.log(this.achievements);
 
     }
 
