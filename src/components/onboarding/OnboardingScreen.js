@@ -12,7 +12,7 @@ import Stance from './Stance';
 import Permissions from './Permissions';
 import Thanks from './Thanks';
 
-class App extends Component {
+class OnboardingScreen extends Component {
 
     constructor(props) {
         super(props);
@@ -63,8 +63,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     }
 });
 
-const ConnectedApp = connect(
+const ConnectedOnboardingScreen = connect(
     mapStateToProps, mapDispatchToProps, null, { forwardRef: true }
-)(App);
+)(OnboardingScreen);
 
-export default ConnectedApp;
+export default ConnectedOnboardingScreen;

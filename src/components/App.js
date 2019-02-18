@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import { setOnboardingSkip, setTrick, setTrickEnabled } from '../store/actions';
 
 import ActiveState from './activestate/ActiveState';
-import Onboarding from './onboarding/Onboarding';
-import Trick from './trick/Trick';
-import Settings from './settings/Settings';
+import OnboardingScreen from './onboarding/OnboardingScreen';
+import TrickScreen from './trick/TrickScreen';
+import SettingsScreen from './settings/SettingsScreen';
 
 import Swiper from 'react-native-swiper';
 import OpaqueOverlay from './ui/OpaqueOverlay';
@@ -53,6 +53,10 @@ class App extends Component {
         this.swiper.scrollBy(1);
     }
 
+    handlePreviousSlide = () => {
+        this.swiper.scrollBy(-1);
+    }
+
     setInitialTrick = () => {
         this.props.setTrick({ name: 'now flip me ✌️', color: ['#344e5c', '#e17a47', '#4ab19d', '#ef3d59', '#efc959'] });
     }
@@ -74,9 +78,9 @@ class App extends Component {
                     loop={false}
                     bounces={true}
                     style={StyleBook.swiper}>
-                    <Onboarding onStart={this.handleNextSlide} />
-                    <Trick onDoubleTap={this.handleNextSlide} />
-                    <Settings />
+                    <OnboardingScreen onStart={this.handleNextSlide} />
+                    <TrickScreen onDoubleTap={this.handleNextSlide} />
+                    <SettingsScreen onBack={this.handlePreviousSlide}/>
                 </Swiper>
                 <ActiveState />
                 <OpaqueOverlay />

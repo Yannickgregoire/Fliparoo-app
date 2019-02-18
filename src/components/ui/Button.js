@@ -6,7 +6,6 @@ export default class Button extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
     }
 
     renderIcon = () => {
@@ -33,7 +32,7 @@ export default class Button extends Component {
     render() {
 
         return (
-            <TouchableOpacity style={StyleBook.buttonTouchable} onPress={this.props.onPress} activeOpacity={.5}>
+            <TouchableOpacity delayPressIn={0} onPressOut={this.props.onPress} style={StyleBook.buttonTouchable} activeOpacity={.5}>
                 <View style={[StyleBook.button, { ...this.props.style }]}>
                     {this.renderIcon()}
                     <View>

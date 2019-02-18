@@ -27,7 +27,8 @@ export const StyleBook = StyleSheet.create({
     },
     row: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginBottom: 18
     },
     divider: {
         height: 32

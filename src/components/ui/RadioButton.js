@@ -39,7 +39,7 @@ export default class RadioButton extends Component {
         const styleRadioSelected = (this.props.selected === true) ? StyleBook.buttonRadioSelected : null;
 
         return (
-            <TouchableOpacity style={StyleBook.buttonRadioTouchable} onPress={this.onSelect} activeOpacity={.5}>
+            <TouchableOpacity style={StyleBook.buttonRadioTouchable} delayPressOut={0} onPressOut={this.onSelect} activeOpacity={.5}>
                 <View style={[StyleBook.button, StyleBook.buttonRadio, styleRadioSelected, { ...this.props.style }]}>
                     {this.renderIcon()}
                     <View>

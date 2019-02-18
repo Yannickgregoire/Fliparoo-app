@@ -134,8 +134,6 @@ const achievementsReducer = (state = initialAchievementsState, action) => {
             break;
 
         case ADD_TRICKLIST_TOTAL:
-
-            console.log( state.trickListTotal.filter((trick) => trick.id === action.trick.id).length )
             if (state.trickListTotal.filter((trick) => trick.id === action.trick.id).length === 0) {
                 return {
                     ...state,
